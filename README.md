@@ -6,12 +6,19 @@
 
 ## Team Member Evaluation Of Teamwork
 #### Team leader:Lê Duy Anh
+(demo)
+![Screenshot 2024-11-04 214046](https://github.com/user-attachments/assets/4a3958b0-8ff8-4a17-b5c2-17b65b3f865c)
 
 ## I.Introduction
 
 This is a project that aims at looking at the data of an online shop located in India while trying to find out the demographic of the customers, buying behavior, and the sales. The analysis also seeks to determine the factors that contribute towards and affect the sales and retention of clients which will enable the online shops to strategize and increase profits while satisfying their customers.
 
-In order to address these questions, we will first describe the data and then conduct analyses using K-Nearest Neighbors (KNN) and regression techniques which are forms of machine learning. This helps us in addressing the questions of how to utilise the measures taken to charge the customers and the sales made in the past to make predictions about the future trends.
+Our project is centered on two key questions related to online retail operations:
+
+- How can we predict future sales volumes based on past data?
+- How can we categorize customers into meaningful segments based on their purchasing behaviors?
+  
+By answering these questions, we aimed to uncover patterns that allow businesses to anticipate demand and better understand their customers. For the first question, we selected a Linear Regression model to predict future sales values, leveraging features such as previous sales records, product type, and seasonal information. For customer segmentation, we implemented the K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and demographic data.
 
 #### Data Sources
 
@@ -56,17 +63,25 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 ## III.Charts
 
-1.Total Quantity Sold cai nay bar chart
 
-2.Profit, and Amount cai nay subplot 2 line graph lam 1
+1.Total Quantity Sold cai nay bar chart by sub 10 cai
+
+2.Profit, and Amount cai nay subplot 2 line graph lam 1 by sub 10 cai
+
+(optional:top theo city hoac state,customer name)
 
 3.
 
 4.
 
 ## IV.Machine Learning Applications
+Linear Regression model to predict future sales values, leveraging features such as previous sales records, product type, and seasonal information.
+
+For customer segmentation,K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and demographic data.
+
 
 ## V.Conclusions
+
 
 ## References
 
