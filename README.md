@@ -1,4 +1,4 @@
-# ONLINE SALES DATA REPORT
+# ONLINE SALES FINAL REPORT
 - **Subject:HSB3119-Introduction to Data Science**
 - **Class:MAS02**
 - **Lecturer:Dr. Emmanuel Lance Christopher VI M. Plan**
@@ -32,7 +32,7 @@ To get the data ready for analysis, we cleaned it by addressing missing values, 
 ---
 
 ## II.Data Discussion
-
+(Exploration: Summarize the data with descriptive statistics (mean, median, standard deviation) to get an overall picture)
 First 10 rows of the table:
 
 ![image](https://github.com/user-attachments/assets/83f3622a-4176-4274-bb53-581221cb72df)
@@ -75,9 +75,9 @@ One peculiar facet of the dataset is the following columns which are regarded as
 4.
 
 ## IV.Machine Learning Applications
-Linear Regression model to predict future sales values, leveraging features such as previous sales records, product type, and seasonal information.
+1.Linear Regression model to predict future sales values,
 
-For customer segmentation,K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and demographic data.
+2.For customer segmentation,K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and city-sate data.
 
 
 ## V.Conclusions
