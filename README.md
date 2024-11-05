@@ -9,7 +9,7 @@
 (demo)
 ![Screenshot 2024-11-04 214046](https://github.com/user-attachments/assets/4a3958b0-8ff8-4a17-b5c2-17b65b3f865c)
 
-# Table of contents
+## Table of contents
 1. [Introduction](#introduction)
     2. [Descriptive statistics](#sec2p2)
     3. [Start looking at categories of diner](#sec2p3)
@@ -83,10 +83,10 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 - **Payment Mode**: This shows the type of payment made by the customer (e.g. Credit Card, COD) indicating what payment methods are preferred by the clients.
 
-### Data Preparation and Cleaning 
+## 3.Data Preparation and Cleaning 
 
 
-## Data Exploration
+## 4.Data Exploration
 
 1.Profit and Amount by Category line chart
 
@@ -94,13 +94,11 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 3.Geographic Analysis: Sales distributions across cities and states to understand regional customer behavior. 
 
-4.Top sales by customer(top 10)
+4.Payment Method Quantity distribution(pie chart)
 
-5.Payment Method Quantity distribution(pie chart)
+5.Profit by month: Monthly and seasonal sales patterns to inform stock and marketing strategies.(line chart)
 
-6.Profit by nonth: Monthly and seasonal sales patterns to inform stock and marketing strategies.(line chart)
-
-## Machine Learning Applications
+## 5.Machine Learning Applications
 4.1 Linear Regression for Sales Prediction
 To forecast sales, we used Linear Regression with the Order Date and Quantity features to predict Amount.
 Evaluation: Mean Absolute Error (MAE) and R-squared metrics showed moderate prediction accuracy.
@@ -117,7 +115,7 @@ Confusion Matrix: Evaluated model accuracy in predicting high vs. low-profit ord
 ROC Curve: Showed model performance in distinguishing between high and low profit
 
 
-## V.Conclusions <a name="conclusion"></a>
+## 6.Conclusions <a name="conclusion"></a>
 
 
 ## References <a name="references"></a>
