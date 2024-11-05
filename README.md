@@ -11,29 +11,27 @@
 
 # Table of contents
 1. [Introduction](#introduction)
-
-2. [Description of the data set](#section2)
-    1. [Initial steps](#sec2p1)
+    1. [Data source](#sec2p1)
     2. [Descriptive statistics](#sec2p2)
     3. [Start looking at categories of diner](#sec2p3)
     4. [Plots to summarize some statistics](#sec2p4)
 
-3. [Regression](#section3)
+4. [Regression](#section3)
     1. [Regression in Seaborn](#sec3p1)
     2. [Simple linear regression using polyfit](#sec3p2)
     3. [Regression with statsmodels](#sec3p3)
     4. [Regression with scikit-learn](#sec3p4)
     5. [Linear regression on various subsets of the data](#sec3p5)
     
-4. [Relationships between variables](#section4)
+5. [Relationships between variables](#section4)
     1. [Visualize relationships between numerical variables with pairplot](#sec4p1)
     2. [Investigate relationships between tip amount and the other variables](#sec4p2)
     3. [Does the amount spent depend on party size?](#sec4p3)
     4. [Classification](#sec4p4)
     
-5. [Work done by other people on the Tips data set](#section5)
+6. [Work done by other people on the Tips data set](#section5)
     
-6. [Conclusion](#conclusion)
+7. [Conclusion](#conclusion)
 
 9. [References](#references)
 
@@ -49,7 +47,7 @@ Our project is centered on two key questions related to online retail operations
   
 By answering these questions, we aimed to uncover patterns that allow businesses to anticipate demand and better understand their customers. For the first question, we selected a Linear Regression model to predict future sales values, leveraging features such as previous sales records, product type, and seasonal information. For customer segmentation, we implemented the K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and demographic data.
 
-#### Data Sources
+#### 1.1. Data Sources <a name="sec2p1"></a>
 
 For this particular project the data is sourced from a dataset provided by one Samruddhi Bhosale on Kaggle and through a dataset available on Github. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
 
