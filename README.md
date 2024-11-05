@@ -27,7 +27,7 @@ For this particular project the data is sourced from a dataset provided by one S
 - **Orders.csv**: Contains Order IDs, order dates, customer names, and locations, which give us a snapshot of who the customers are and where they’re from.
 - **Details.csv**: Adds specific order details linked to each Order ID, allowing us to understand each purchase’s unique characteristics.
   
-To get the data ready for analysis, we cleaned it by addressing missing values, duplicates, and other inconsistencies. These steps were essential to make sure our insights are based on accurate and reliable data.
+To get the data ready for analysis, we cleaned it by addressing missing values, duplicates, and other inconsistencies and luckily we found no missing and duplicate values in the dataset, so no imputation was necessary.These steps were essential to make sure our insights are based on accurate and reliable data.
 
 ---
 
