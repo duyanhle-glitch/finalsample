@@ -102,17 +102,16 @@ One peculiar facet of the dataset is the following columns which are regarded as
 ## Machine Learning Applications
 4.1 Linear Regression for Sales Prediction
 To forecast sales, we used Linear Regression with the Order Date and Quantity features to predict Amount.
-
 Evaluation: Mean Absolute Error (MAE) and R-squared metrics showed moderate prediction accuracy.
 Visualization: A scatter plot of actual vs. predicted sales highlighted model performance.
+
 4.2 Customer Segmentation with K-Nearest Neighbors (KNN)
 For customer segmentation, we applied KNN using features such as Amount, Quantity, and location data (City, State).
-
 Elbow Method: Determined the optimal number of clusters.
 PCA Visualization: Showcased customer clusters based on spending patterns and geography.
+
 4.3 Logistic Regression for High-Profit Classification
 To classify high-profit orders, we used Logistic Regression with Quantity, Category, and Payment Mode as predictors.
-
 Confusion Matrix: Evaluated model accuracy in predicting high vs. low-profit orders.
 ROC Curve: Showed model performance in distinguishing between high and low profit
 
