@@ -62,6 +62,7 @@ The table has 1500 rows,11 columns
 
 (Average Amount:291.847333 , Average Profit:24.64200) cai nay optional
 details.describe() dung lenh nay
+sum of amount,profit,quantity
 
 This project tackles the examination of the data structure and first attempts to assess the student behavior, the level of the product, and what the sales patterns are. The purpose of such activity is to enable the analyst to understand the main client features of the dataset and, in the following phases, prepare the dataset for further analysis.
 
@@ -97,7 +98,7 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 5.Payment Method Quantity distribution(pie chart)
 
-6.Sales Trends: Monthly and seasonal sales patterns to inform stock and marketing strategies.(line chart)
+6.Profit by nonth: Monthly and seasonal sales patterns to inform stock and marketing strategies.(line chart)
 
 ## Machine Learning Applications
 4.1 Linear Regression for Sales Prediction
@@ -116,12 +117,19 @@ Confusion Matrix: Evaluated model accuracy in predicting high vs. low-profit ord
 ROC Curve: Showed model performance in distinguishing between high and low profit
 
 
-## V.Conclusions
+## V.Conclusions <a name="conclusion"></a>
 
 
-## References
+## References <a name="references"></a>
 
-- https://www.kaggle.com/datasets/samruddhi4040/online-sales-data
+- [1]  Anaconda Distribution
+https://www.anaconda.com/
+
+- [2] Python Software Foundation
+https://www.python.org/
+
+- [3] Project Jupyter
+https://jupyter.org/
 
 
 
