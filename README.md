@@ -9,7 +9,36 @@
 (demo)
 ![Screenshot 2024-11-04 214046](https://github.com/user-attachments/assets/4a3958b0-8ff8-4a17-b5c2-17b65b3f865c)
 
-## I.Introduction
+# Table of contents
+1. [Introduction](#introduction)
+
+2. [Description of the data set](#section2)
+    1. [Initial steps](#sec2p1)
+    2. [Descriptive statistics](#sec2p2)
+    3. [Start looking at categories of diner](#sec2p3)
+    4. [Plots to summarize some statistics](#sec2p4)
+
+3. [Regression](#section3)
+    1. [Regression in Seaborn](#sec3p1)
+    2. [Simple linear regression using polyfit](#sec3p2)
+    3. [Regression with statsmodels](#sec3p3)
+    4. [Regression with scikit-learn](#sec3p4)
+    5. [Linear regression on various subsets of the data](#sec3p5)
+    
+4. [Relationships between variables](#section4)
+    1. [Visualize relationships between numerical variables with pairplot](#sec4p1)
+    2. [Investigate relationships between tip amount and the other variables](#sec4p2)
+    3. [Does the amount spent depend on party size?](#sec4p3)
+    4. [Classification](#sec4p4)
+    
+5. [Work done by other people on the Tips data set](#section5)
+    
+6. [Conclusion](#conclusion)
+
+9. [References](#references)
+
+
+## 1.Introduction  <a name="introduction"></a>
 
 This is a project that aims at looking at the data of an online shop located in India while trying to find out the demographic of the customers, buying behavior, and the sales. The analysis also seeks to determine the factors that contribute towards and affect the sales and retention of clients which will enable the online shops to strategize and increase profits while satisfying their customers.
 
@@ -61,8 +90,9 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 - **Payment Mode**: This shows the type of payment made by the customer (e.g. Credit Card, COD) indicating what payment methods are preferred by the clients.
 
-## III.Charts
+## Data Wrangling 
 
+## Data Exploration
 
 1.Total Quantity Sold cai nay bar chart by sub 10 cai
 
@@ -74,7 +104,7 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 4.
 
-## IV.Machine Learning Applications
+## Machine Learning Applications
 1.Linear Regression model to predict future sales values,
 
 2.For customer segmentation,K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and city-sate data.
