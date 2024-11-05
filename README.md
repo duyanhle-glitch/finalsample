@@ -11,12 +11,11 @@
 
 # Table of contents
 1. [Introduction](#introduction)
-    1. [Data source](#sec2p1)
     2. [Descriptive statistics](#sec2p2)
     3. [Start looking at categories of diner](#sec2p3)
     4. [Plots to summarize some statistics](#sec2p4)
 
-4. [Regression](#section3)
+2. [Data source](#section3)
     1. [Regression in Seaborn](#sec3p1)
     2. [Simple linear regression using polyfit](#sec3p2)
     3. [Regression with statsmodels](#sec3p3)
@@ -47,18 +46,13 @@ Our project is centered on two key questions related to online retail operations
   
 By answering these questions, we aimed to uncover patterns that allow businesses to anticipate demand and better understand their customers. For the first question, we selected a Linear Regression model to predict future sales values, leveraging features such as previous sales records, product type, and seasonal information. For customer segmentation, we implemented the K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and demographic data.
 
-#### 1.1. Data Sources <a name="sec2p1"></a>
+## 2. Data Sources <a name="section3"></a>
 
 For this particular project the data is sourced from a dataset provided by one Samruddhi Bhosale on Kaggle and through a dataset available on Github. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
 
 - **Orders.csv**: Contains Order IDs, order dates, customer names, and locations, which give us a snapshot of who the customers are and where they’re from.
 - **Details.csv**: Adds specific order details linked to each Order ID, allowing us to understand each purchase’s unique characteristics.
-  
-To get the data ready for analysis, we cleaned it by addressing missing values, duplicates, and other inconsistencies and luckily we found no missing and duplicate values in the dataset, so no imputation was necessary.These steps were essential to make sure our insights are based on accurate and reliable data.
 
----
-
-## II.Data Discussion
 (Exploration: Summarize the data with descriptive statistics (mean, median, standard deviation) to get an overall picture)
 First 10 rows of the table:
 
@@ -88,24 +82,39 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 - **Payment Mode**: This shows the type of payment made by the customer (e.g. Credit Card, COD) indicating what payment methods are preferred by the clients.
 
-## Data Wrangling 
+### Data Preparation and Cleaning 
+
 
 ## Data Exploration
 
-1.Total Quantity Sold cai nay bar chart by sub 10 cai
+1.Profit and Amount by Category line chart
 
-2.Profit, and Amount cai nay subplot 2 line graph lam 1 by sub 10 cai
+2.Total Quantity Sold by Sub-Category(top 10) bar chart
 
-(optional:top theo city hoac state,customer name)
+3.Geographic Analysis: Sales distributions across cities and states to understand regional customer behavior. 
 
-3.
+4.Top sales by customer(top 10)
 
-4.
+5.Payment Method Quantity distribution(pie chart)
+
+6.Sales Trends: Monthly and seasonal sales patterns to inform stock and marketing strategies.(line chart)
 
 ## Machine Learning Applications
-1.Linear Regression model to predict future sales values,
+4.1 Linear Regression for Sales Prediction
+To forecast sales, we used Linear Regression with the Order Date and Quantity features to predict Amount.
 
-2.For customer segmentation,K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and city-sate data.
+Evaluation: Mean Absolute Error (MAE) and R-squared metrics showed moderate prediction accuracy.
+Visualization: A scatter plot of actual vs. predicted sales highlighted model performance.
+4.2 Customer Segmentation with K-Nearest Neighbors (KNN)
+For customer segmentation, we applied KNN using features such as Amount, Quantity, and location data (City, State).
+
+Elbow Method: Determined the optimal number of clusters.
+PCA Visualization: Showcased customer clusters based on spending patterns and geography.
+4.3 Logistic Regression for High-Profit Classification
+To classify high-profit orders, we used Logistic Regression with Quantity, Category, and Payment Mode as predictors.
+
+Confusion Matrix: Evaluated model accuracy in predicting high vs. low-profit orders.
+ROC Curve: Showed model performance in distinguishing between high and low profit
 
 
 ## V.Conclusions
