@@ -83,10 +83,12 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 ## 3.Data Preparation and Cleaning 
 
+![Screenshot 2024-11-07 002127](https://github.com/user-attachments/assets/533e88dd-6ab1-4061-9590-ae9ea9b72b71)
+
 
 ## 4.Data Exploration
-1.Profit by month: Monthly and seasonal sales patterns to inform stock and marketing strategies.
-### Monthly Profit Trend Analysis
+
+### 4.1. Monthly Profit Trend Analysis
 
 This line chart displays the **monthly profit trend** over the course of a year. It shows the fluctuations in profit from January to December, with significant variations across different months.
 
@@ -134,17 +136,40 @@ This line chart displays the **monthly profit trend** over the course of a year.
 2.
 
 ## 5.Machine Learning Applications
-4.1 Linear Regression for Sales Prediction
-To forecast sales, we used Linear Regression with the Order Date and Quantity features to predict Amount.
-Evaluation: Mean Absolute Error (MAE) and R-squared metrics showed moderate prediction accuracy.
-Visualization: A scatter plot of actual vs. predicted sales highlighted model performance.
+### 5.1 Linear Regression for Sales Prediction
+
+Model Performance Summary:
+Mean Absolute Error (MAE): 182.78
+This means that, on average, the model's predictions deviate from the actual Amount by around $182.78. While this gives us an idea of the error in our predictions, the significance of this MAE depends on the scale of typical sales amounts. If the majority of sales are relatively low (e.g., under $500), an error of $182 could be considered high.
+
+R-squared (R²): 0.49
+An R-squared of 0.49 suggests that the model explains about 49% of the variance in the Amount variable. This is moderate, indicating that the model captures some of the factors affecting Amount but leaves about 51% unexplained. This suggests that other variables not included in the model might significantly influence sales amounts, or that linear relationships alone may not fully capture the complexity of the data.
+
+![Screenshot 2024-11-07 003644](https://github.com/user-attachments/assets/8d8ae656-6ad4-4903-b0b4-e19c8ae19323)
+
+Insights from the Scatter Plot:
+The scatter plot of Actual vs. Predicted Sales Amount shows that the model does relatively well for lower sales amounts (most points are clustered near the origin), but as the actual sales amount increases, the spread between actual and predicted values becomes more pronounced. This indicates the model struggles with higher sales amounts, suggesting it may not generalize well across all sales levels.
+
+Interpretation and Recommendations for the Online Sales Shop:
+Prediction Accuracy for Smaller Sales:
+
+The model seems more accurate for smaller sales amounts, which may constitute the majority of daily transactions. This means it could be useful in forecasting typical order values in a routine business context. If the shop relies on predicting regular, lower-value transactions, this model might be sufficient.
+Improvement for Larger Sales Predictions:
+
+The accuracy drops for larger sales values, suggesting the model may be missing factors that are important for higher-value sales. To improve prediction accuracy for large orders, consider:
+Adding new features: Explore additional variables that might influence high-value orders, such as customer demographics, purchase history, seasonal factors, or promotional impacts.
+Non-linear models: Experiment with other algorithms like decision trees, random forests, or boosting models, which can capture non-linear relationships better than linear regression.
+Business Application:
+
+Stock and Resource Planning: The model can provide insights for stock management by predicting the average sales amount and frequency of smaller orders, helping with resource allocation and inventory planning.
+Promotional Strategy: Use the model's predictions to identify trends in smaller sales, which could be leveraged to target promotions and discounts for frequent but lower-value orders.
+Customer Segmentation: Since the model has limited success with larger sales, consider further segmenting customers or products to see if specific groups or categories are driving larger purchases, and design targeted marketing efforts for these groups.
+
+![Screenshot 2024-11-07 003518](https://github.com/user-attachments/assets/d24575ed-03cc-40f7-9186-9a3c1cdb2e78)
 
 
 
-4.2 Customer Segmentation with K-Nearest Neighbors (KNN)
-For customer segmentation, we applied KNN using features such as Amount, Quantity, and location data (City, State).
-Elbow Method: Determined the optimal number of clusters.
-PCA Visualization: Showcased customer clusters based on spending patterns and geography.
+### 5.2 Customer Segmentation with K-Nearest Neighbors (KNN)
 
 ### Interpretation of the Elbow Plot
 The **y-axis** represents the **Within-Cluster Sum of Squares (WCSS)**, which is a measure of the variance within each cluster. The **x-axis** represents the number of clusters (`k`).
@@ -194,33 +219,6 @@ Insights from the Visualization:
 The distinct separation of clusters in the PCA plot shows that our features (Amount, Quantity, and location data) were effective in differentiating customer segments.
 Segment 2 appears to have customers who are outliers in terms of spending patterns, which could indicate high-value or high-loyalty customers.
 
-4. Interesting Findings and Business Insights
-Distinct Customer Segments:
-
-The model identified three main customer segments with clear separation:
-Segment 0 (Low-Value Customers): These customers make low to medium-value purchases with limited quantity. They may be occasional or budget-conscious buyers.
-Segment 1 (Medium-Value Customers): Representing the average customer, these buyers make medium-value purchases and could be targeted with upselling and cross-selling strategies.
-Segment 2 (High-Value Customers): This segment includes high-spending customers who purchase larger quantities. They likely represent loyal or high-priority customers who could benefit from personalized marketing, loyalty rewards, and exclusive promotions.
-Targeted Marketing Strategies:
-
-Segment 0: Consider using discounts or entry-level products to encourage more frequent purchases from this segment. Promoting bundles or budget-friendly options could also attract this group.
-Segment 1: This group may be responsive to upselling and cross-selling strategies. Highlight complementary products or related items during checkout to increase their order value.
-Segment 2: For high-value customers, consider implementing loyalty programs or personalized recommendations to encourage repeat purchases and reward their loyalty. Exclusive offers or VIP access to new products could be particularly appealing to this segment.
-Optimized Resource Allocation:
-
-Inventory and logistics can be optimized based on customer segments. For example, maintaining sufficient stock for products popular among Segment 2 can ensure high-value customers receive priority service, while budget products for Segment 0 can be stocked based on demand patterns.
-Summary for the Boss
-The KNN model successfully identified three distinct customer segments with high classification accuracy. This segmentation provides valuable insights that can drive targeted marketing, customer retention strategies, and optimized inventory management:
-
-
-
-Segment 0 (Low-Spenders): Attract them with discounts or budget-friendly bundles to encourage frequent purchases.
-Segment 1 (Average Buyers): Increase their order value with upselling and cross-selling strategies.
-Segment 2 (High-Spenders): Retain them with loyalty programs, personalized offers, and exclusive deals.
-This segmentation will allow us to cater to each customer group’s specific needs, potentially increasing engagement, revenue, and customer satisfaction across different spending levels.
-
-![Screenshot 2024-11-06 214240](https://github.com/user-attachments/assets/c3db1e97-b221-4577-b665-b5456c1cd9ab)
-
 - **Cluster Segmentation Plot**:
   - The scatter plot shows three distinct clusters (Segments 0, 1, and 2) based on `Quantity` and `Amount`.
   - **Segment 0** (purple): Consists of transactions with lower quantities and lower sales amounts.
@@ -248,18 +246,9 @@ This segmentation will allow us to cater to each customer group’s specific nee
 ### Summary
 The KNN model has successfully segmented customers into distinct groups with 100% accuracy. These segments provide actionable insights for personalized marketing, inventory management, and customer retention strategies. Leveraging these insights can help increase engagement, optimize inventory, and ultimately boost sales for the online shop.
 
+![Screenshot 2024-11-06 214240](https://github.com/user-attachments/assets/c3db1e97-b221-4577-b665-b5456c1cd9ab)
+
 ![Screenshot 2024-11-06 214610](https://github.com/user-attachments/assets/4e90cb99-37e3-4c74-98cb-c2343bdb9019)
-
-
-
-
-
-
-
-4.3 Logistic Regression for High-Profit Classification
-To classify high-profit orders, we used Logistic Regression with Quantity, Category, and Payment Mode as predictors.
-Confusion Matrix: Evaluated model accuracy in predicting high vs. low-profit orders.
-ROC Curve: Showed model performance in distinguishing between high and low profit
 
 
 ## 6.Conclusions <a name="conclusion"></a>
