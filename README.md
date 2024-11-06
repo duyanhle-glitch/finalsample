@@ -5,9 +5,7 @@
 - **Group:06**
 
 ## Team Member Evaluation Of Teamwork
-#### Team leader:Lê Duy Anh
-(demo)
-![Screenshot 2024-11-04 214046](https://github.com/user-attachments/assets/4a3958b0-8ff8-4a17-b5c2-17b65b3f865c)
+
 
 ## Table of contents
 1. [Introduction](#introduction)
