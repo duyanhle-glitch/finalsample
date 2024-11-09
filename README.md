@@ -59,23 +59,12 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 - **Payment Mode**: This shows the type of payment made by the customer (e.g. Credit Card, COD) indicating what payment methods are preferred by the clients.
 
-## 3.Data Preparation and Cleaning <a name="section3"></a>
-
-The data preparation and cleaning process is crucial in preparing the dataset for analysis and ensuring accurate results. Initially, we performed a thorough check of the data’s structure, data types, and completeness by examining its summary statistics, types, and sample rows. The dataset contains 1,500 entries with 11 columns, including both numerical columns (such as 'Amount,' 'Profit,' and 'Quantity') and categorical columns (like 'CustomerName,' 'State,' 'City,' 'Category,' 'Sub-Category,' and 'PaymentMode'). This initial examination indicated no missing values, making the dataset complete and eliminating the need for imputation.
-
 ![Screenshot 2024-11-09 231317](https://github.com/user-attachments/assets/c6198167-26ad-44af-b241-31176f759f5e)
 
 
-During exploration, summary statistics highlighted key insights into the data distribution. The 'Amount' and 'Profit' columns had significant variability, with 'Amount' ranging from 4 to 5729 and 'Profit' ranging from -1981 to 1864. This variability suggests a diverse set of transactions, with both highly profitable and unprofitable items. Notably, the mean 'Profit' was 24.64, indicating that while most transactions yielded a profit, some resulted in substantial losses. Furthermore, 'Quantity' had a narrower range, from 1 to 14, with an average of around 3.74 per order. These descriptive statistics helped identify potential outliers in 'Profit' and 'Amount,' which we retained for further analysis as they could represent meaningful high- or low-performing transactions.
+## 3.Data Preparation and Cleaning <a name="section3"></a>
 
-To make the dataset ready for machine learning, we performed several preprocessing steps. First, date formatting was applied to 'Order Date' by converting it from string format to a datetime format, enabling the extraction of temporal features like 'OrderMonth' and 'OrderDayOfWeek.' These new features capture monthly and weekly patterns in purchasing behavior, which could provide insight into seasonality and day-based trends in sales.
-
-Next, we addressed categorical variables, such as 'Category,' 'Sub-Category,' and 'PaymentMode.' For machine learning, these were converted into numerical representations using one-hot encoding. This transformation enables categorical values to be used in regression and clustering algorithms without introducing unintended ordinal relationships. 
-
-Additionally, the data was checked for duplicates, which were removed to prevent potential biases in analysis. Numerical features were standardized to ensure comparability and to prevent any one feature from disproportionately influencing the model, particularly relevant for 'Amount' and 'Profit' given their wide ranges. The final dataset was verified for consistency and coherence, providing a clean and well-structured base for further exploration and predictive modeling. 
-
-In total, the cleaned dataset consists of 1,500 records, with a total sales 'Amount' of 437,771, a total 'Quantity' of 5,615, and a total 'Profit' of 36,963. These summary values offer a high-level perspective on the data’s scope and scale, setting a foundation for detailed analysis and model development.
-
+The data preparation and cleaning process is crucial in preparing the dataset for analysis and ensuring accurate results. Initially, we performed a thorough check of the data’s structure, data types, and completeness by examining its summary statistics, types, and sample rows. The dataset contains 1,500 entries with 11 columns, including both numerical columns (such as 'Amount,' 'Profit,' and 'Quantity') and categorical columns (like 'CustomerName,' 'State,' 'City,' 'Category,' 'Sub-Category,' and 'PaymentMode'). This initial examination indicated no missing values, making the dataset complete and eliminating the need for imputation.
 #### Data Information
 
 ```plaintext
@@ -98,6 +87,30 @@ Data columns (total 11 columns):
 dtypes: int64(3), object(8)
 memory usage: 129.0+ KB
 ```
+
+During exploration, summary statistics highlighted key insights into the data distribution. The 'Amount' and 'Profit' columns had significant variability, with 'Amount' ranging from 4 to 5729 and 'Profit' ranging from -1981 to 1864. This variability suggests a diverse set of transactions, with both highly profitable and unprofitable items. Notably, the mean 'Profit' was 24.64, indicating that while most transactions yielded a profit, some resulted in substantial losses. Furthermore, 'Quantity' had a narrower range, from 1 to 14, with an average of around 3.74 per order. These descriptive statistics helped identify potential outliers in 'Profit' and 'Amount,' which we retained for further analysis as they could represent meaningful high- or low-performing transactions.
+
+#### Data Summary
+
+| Statistic | Amount       | Profit       | Quantity    |
+|-----------|--------------|--------------|-------------|
+| Count     | 1500.000000  | 1500.00000   | 1500.000000 |
+| Mean      | 291.847333   | 24.64200     | 3.743333    |
+| Std Dev   | 461.924620   | 168.55881    | 2.184942    |
+| Min       | 4.000000     | -1981.00000  | 1.000000    |
+| 25%       | 47.750000    | -12.00000    | 2.000000    |
+| 50%       | 122.000000   | 8.00000      | 3.000000    |
+| 75%       | 326.250000   | 38.00000     | 5.000000    |
+| Max       | 5729.000000  | 1864.00000   | 14.000000   |
+
+
+To make the dataset ready for machine learning, we performed several preprocessing steps. First, date formatting was applied to 'Order Date' by converting it from string format to a datetime format, enabling the extraction of temporal features like 'OrderMonth' and 'OrderDayOfWeek.' These new features capture monthly and weekly patterns in purchasing behavior, which could provide insight into seasonality and day-based trends in sales.
+
+Next, we addressed categorical variables, such as 'Category,' 'Sub-Category,' and 'PaymentMode.' For machine learning, these were converted into numerical representations using one-hot encoding. This transformation enables categorical values to be used in regression and clustering algorithms without introducing unintended ordinal relationships. 
+
+Additionally, the data was checked for duplicates, which were removed to prevent potential biases in analysis. Numerical features were standardized to ensure comparability and to prevent any one feature from disproportionately influencing the model, particularly relevant for 'Amount' and 'Profit' given their wide ranges. The final dataset was verified for consistency and coherence, providing a clean and well-structured base for further exploration and predictive modeling. 
+
+In total, the cleaned dataset consists of 1,500 records, with a total sales 'Amount' of 437,771, a total 'Quantity' of 5,615, and a total 'Profit' of 36,963. These summary values offer a high-level perspective on the data’s scope and scale, setting a foundation for detailed analysis and model development.
 
 Totals
 
