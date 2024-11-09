@@ -9,18 +9,11 @@
 
 ## Table of contents
 1. [Introduction](#introduction)
-    2. [Descriptive statistics](#sec2p2)
-    3. [Start looking at categories of diner](#sec2p3)
-    4. [Plots to summarize some statistics](#sec2p4)
 
 2. [Data source](#section3)
-    1. [Regression in Seaborn](#sec3p1)
-    2. [Simple linear regression using polyfit](#sec3p2)
-    3. [Regression with statsmodels](#sec3p3)
-    4. [Regression with scikit-learn](#sec3p4)
-    5. [Linear regression on various subsets of the data](#sec3p5)
+    1. [Dataset Overview](#sec3p1)
     
-5. [Relationships between variables](#section4)
+3. [Relationships between variables](#section4)
     1. [Visualize relationships between numerical variables with pairplot](#sec4p1)
     2. [Investigate relationships between tip amount and the other variables](#sec4p2)
     3. [Does the amount spent depend on party size?](#sec4p3)
@@ -35,36 +28,21 @@
 
 ## 1.Introduction  <a name="introduction"></a>
 
-This is a project that aims at looking at the data of an online shop located in India while trying to find out the demographic of the customers, buying behavior, and the sales. The analysis also seeks to determine the factors that contribute towards and affect the sales and retention of clients which will enable the online shops to strategize and increase profits while satisfying their customers.
+The purpose of this data report is to analyze sales and customer behavior for an online retail business operating in India. The dataset contains information on transactions, including product categories, payment methods, order quantities, and profit margins. The business aims to understand the key drivers of sales and identify potential segments within its customer base to enhance targeting strategies and optimize inventory management. To achieve this, we explore and analyze various sales metrics and patterns, such as monthly profit trends, order distributions by payment mode, and top-performing products.
 
-Our project is centered on two key questions related to online retail operations:
+In our analysis, we approach the problem from both descriptive and predictive angles. Descriptive analytics provide insights into existing sales patterns, such as which products and categories yield the highest profits and how customers prefer to pay for their purchases. Visualizations like monthly profit trends and the distribution of orders by category help uncover these trends, allowing the team to spot seasonality effects and popular payment methods. Predictive analytics, including regression modeling, aim to forecast future sales based on historical patterns, supporting inventory planning and demand prediction. 
 
-- How can we predict future sales volumes based on past data?
-- How can we categorize customers into meaningful segments based on their purchasing behaviors?
-  
-By answering these questions, we aimed to uncover patterns that allow businesses to anticipate demand and better understand their customers. For the first question, we selected a Linear Regression model to predict future sales values, leveraging features such as previous sales records, product type, and seasonal information. For customer segmentation, we implemented the K-Nearest Neighbors (KNN) algorithm to classify customers into groups based on purchasing history and demographic data.
+Additionally, we employ customer segmentation using KMeans clustering to classify customers based on purchasing behavior, such as the quantity and value of purchases. This segmentation helps identify different customer types and enables the business to develop targeted marketing strategies. By leveraging a combination of statistical models and machine learning techniques, this report seeks to answer critical business questions around sales prediction, customer preferences, and product performance, ultimately guiding data-driven decision-making for improved profitability and customer satisfaction.
 
 ## 2. Data Sources <a name="section3"></a>
 
-For this particular project the data is sourced from a dataset provided by one Samruddhi Bhosale on Kaggle and through a dataset available on Github. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
+For this particular project the data is sourced from a dataset provided by  Samruddhi Bhosale on Kaggle and through a dataset available on Github. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
 
 - **Orders.csv**: Contains Order IDs, order dates, customer names, and locations, which give us a snapshot of who the customers are and where they’re from.
 - **Details.csv**: Adds specific order details linked to each Order ID, allowing us to understand each purchase’s unique characteristics.
 
-(Exploration: Summarize the data with descriptive statistics (mean, median, standard deviation) to get an overall picture)
-First 10 rows of the table:
+### 2.1. Dataset Overview <a name="sec3p1"></a>
 
-![image](https://github.com/user-attachments/assets/83f3622a-4176-4274-bb53-581221cb72df)
-
-The table has 1500 rows,11 columns
-
-(Average Amount:291.847333 , Average Profit:24.64200) cai nay optional
-details.describe() dung lenh nay
-sum of amount,profit,quantity
-
-This project tackles the examination of the data structure and first attempts to assess the student behavior, the level of the product, and what the sales patterns are. The purpose of such activity is to enable the analyst to understand the main client features of the dataset and, in the following phases, prepare the dataset for further analysis.
-
-Dataset Overview
 One peculiar facet of the dataset is the following columns which are regarded as able to provide innovative information of clients of diverse purchase elements of interest and their purchase patterns:
 
 - **Order ID**: This is a distinct number that is allocated to every single order so that every order can be traced.
@@ -81,178 +59,185 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 - **Payment Mode**: This shows the type of payment made by the customer (e.g. Credit Card, COD) indicating what payment methods are preferred by the clients.
 
-## 3.Data Preparation and Cleaning 
+## 3.Data Preparation and Cleaning <a name="section3"></a>
 
-![Screenshot 2024-11-07 002127](https://github.com/user-attachments/assets/533e88dd-6ab1-4061-9590-ae9ea9b72b71)
+The data preparation and cleaning process is crucial in preparing the dataset for analysis and ensuring accurate results. Initially, we performed a thorough check of the data’s structure, data types, and completeness by examining its summary statistics, types, and sample rows. The dataset contains 1,500 entries with 11 columns, including both numerical columns (such as 'Amount,' 'Profit,' and 'Quantity') and categorical columns (like 'CustomerName,' 'State,' 'City,' 'Category,' 'Sub-Category,' and 'PaymentMode'). This initial examination indicated no missing values, making the dataset complete and eliminating the need for imputation.
 
-
-## 4.Data Exploration
-
-### 4.1. Monthly Profit Trend Analysis
-
-This line chart displays the **monthly profit trend** over the course of a year. It shows the fluctuations in profit from January to December, with significant variations across different months.
-
-### Interpretation and Key Observations
-
-1. **Steady Decline in Early Months**:
-   - From **January to April**, there is a consistent decline in profit, dropping from around $10,000 in January to close to $1,000 in April. This steady downward trend suggests either a seasonal slowdown, reduced sales, or increased costs during these months.
-   
-2. **Losses in Mid-Year (May)**:
-   - In **May**, profit dips below zero, indicating a **net loss**. This may have been caused by factors such as a significant drop in sales, increased operational costs, or discounts and promotions that impacted profit margins.
-   - This dip marks the lowest point in the year, with losses close to -$4,000, suggesting this month had particularly challenging financial performance.
-
-3. **Recovery and Growth in Late Year**:
-   - From **June to November**, there is noticeable improvement, with profit showing an upward trend despite some fluctuations.
-   - **October and November** see a strong spike in profit, with November reaching the highest point after January, nearing around $10,000. This increase could be due to seasonal factors like holiday sales, promotional events, or increased demand towards the end of the year.
-
-4. **End-of-Year Drop (December)**:
-   - Profit sharply declines again in **December**. This drop might indicate post-holiday slowdowns, inventory clearance sales at lower profit margins, or other seasonal factors that impact profit.
-
-### Interesting Findings
-
-- **Seasonal Patterns**: There appear to be distinct **seasonal trends** in profit, with early-year (January-April) and late-year (October-November) peaks, and a mid-year dip in May. This pattern could guide planning for inventory, staffing, and promotions.
-  
-- **Key Focus Months**:
-   - **January and November** are peak profit months, indicating high demand or successful sales strategies. These months should be prioritized for marketing and inventory buildup.
-   - **May** is a low point, possibly indicating a need to reduce costs or boost sales to avoid future losses. Consider targeted promotions or expense management strategies during this period.
-
-- **End-of-Year Decline**: The drop in December might be typical of post-holiday slowdowns, but monitoring this trend could help adjust end-of-year strategies to mitigate profit loss.
-
-### Actionable Insights
-1. **Enhanced Planning for High- and Low-Profit Periods**:
-   - Increase marketing and stock for January and November to maximize sales during high-profit months.
-   - Consider special promotions or cost-saving measures in May to counteract the low-profit trend.
-
-2. **Seasonal Promotions**:
-   - Leverage known high-profit months for launching new products or premium offerings.
-   - Use mid-year periods (like May) to introduce discounts or clear excess inventory.
-
-3. **Cost Management in Decline Months**:
-   - In months with declining trends (April, May, December), focus on minimizing operational costs or improving efficiency to protect profit margins.
+![Screenshot 2024-11-09 231317](https://github.com/user-attachments/assets/c6198167-26ad-44af-b241-31176f759f5e)
 
 
-![Screenshot 2024-11-06 222307](https://github.com/user-attachments/assets/f5e7cb56-8d9f-471e-b0f6-9c24a353e9bb)
+During exploration, summary statistics highlighted key insights into the data distribution. The 'Amount' and 'Profit' columns had significant variability, with 'Amount' ranging from 4 to 5729 and 'Profit' ranging from -1981 to 1864. This variability suggests a diverse set of transactions, with both highly profitable and unprofitable items. Notably, the mean 'Profit' was 24.64, indicating that while most transactions yielded a profit, some resulted in substantial losses. Furthermore, 'Quantity' had a narrower range, from 1 to 14, with an average of around 3.74 per order. These descriptive statistics helped identify potential outliers in 'Profit' and 'Amount,' which we retained for further analysis as they could represent meaningful high- or low-performing transactions.
 
-2.
+To make the dataset ready for machine learning, we performed several preprocessing steps. First, date formatting was applied to 'Order Date' by converting it from string format to a datetime format, enabling the extraction of temporal features like 'OrderMonth' and 'OrderDayOfWeek.' These new features capture monthly and weekly patterns in purchasing behavior, which could provide insight into seasonality and day-based trends in sales.
+
+Next, we addressed categorical variables, such as 'Category,' 'Sub-Category,' and 'PaymentMode.' For machine learning, these were converted into numerical representations using one-hot encoding. This transformation enables categorical values to be used in regression and clustering algorithms without introducing unintended ordinal relationships. 
+
+Additionally, the data was checked for duplicates, which were removed to prevent potential biases in analysis. Numerical features were standardized to ensure comparability and to prevent any one feature from disproportionately influencing the model, particularly relevant for 'Amount' and 'Profit' given their wide ranges. The final dataset was verified for consistency and coherence, providing a clean and well-structured base for further exploration and predictive modeling. 
+
+In total, the cleaned dataset consists of 1,500 records, with a total sales 'Amount' of 437,771, a total 'Quantity' of 5,615, and a total 'Profit' of 36,963. These summary values offer a high-level perspective on the data’s scope and scale, setting a foundation for detailed analysis and model development.
+
+#### Data Information
+
+```plaintext
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 1500 entries, 0 to 1499
+Data columns (total 11 columns):
+ #   Column        Non-Null Count  Dtype 
+---  ------        --------------  ----- 
+ 0   Order ID      1500 non-null   object
+ 1   Order Date    1500 non-null   object
+ 2   CustomerName  1500 non-null   object
+ 3   State         1500 non-null   object
+ 4   City          1500 non-null   object
+ 5   Amount        1500 non-null   int64 
+ 6   Profit        1500 non-null   int64 
+ 7   Quantity      1500 non-null   int64 
+ 8   Category      1500 non-null   object
+ 9   Sub-Category  1500 non-null   object
+ 10  PaymentMode   1500 non-null   object
+dtypes: int64(3), object(8)
+memory usage: 129.0+ KB
+```
+
+Totals
+
+- **Total Amount**: 437,771
+- **Total Quantity**: 5,615
+- **Total Profit**: 36,963
+
+## 4.Charts
+### 4.1.Mothly Profit Trend
+
+The **Monthly Profit Trend** chart provides valuable insights into the variations in profit over the year. This line chart shows a significant dip in profits around May, indicating a potential seasonal low point in sales or possibly a period of increased returns or operational costs. The profits steadily increase after this dip, with a sharp peak in November, suggesting a strong sales period, possibly due to seasonal events, promotions, or holidays.
+
+Observing these patterns can help the business identify high and low-performing months and plan accordingly. For example, the significant increase in November could be leveraged for additional marketing efforts in the same period next year. Additionally, understanding the low-profit months, such as May, could encourage strategies to boost sales or manage costs better during that period. This trend analysis is an essential tool for strategic planning, allowing the business to align its operational, marketing, and sales efforts with seasonal fluctuations.
+
+![chart1](https://github.com/user-attachments/assets/54ce9459-c59f-425c-b72d-2036d641a84e)
+
+### 4.2.Top 10 most profit product
+
+The **Top 10 Products by Total Profit** horizontal bar chart provides a clear view of which products contribute the most to the company’s profit. At the top of the list are **Printers** and **Bookcases**, generating the highest profits, followed by **Sarees** and **Accessories**. This insight suggests that items like printers and bookcases might be high-margin products or in high demand, which could drive the majority of the store's profitability.
+
+Interestingly, **Tables** and **Trousers** also contribute significantly, even though they might not immediately be considered top profit-driving products. The inclusion of items like **Phones** and **Hankerchiefs** lower in the top 10 indicates diversity in profitable items, covering both technology and clothing/accessories categories. For strategic decisions, the business might focus on promoting these high-profit products more aggressively or analyzing customer purchase behaviors to further increase sales in these categories. This chart also highlights opportunities to expand inventory in these profitable sub-categories or apply targeted marketing efforts to boost sales further.
+
+![chart3](https://github.com/user-attachments/assets/91a19bbf-ba81-4751-9cd4-3063aea20454)
+
+### 4.3.Number of orders by category
+
+The **Number of Orders by Category** chart highlights the distribution of orders across major product categories, providing insight into consumer preferences. **Clothing** is the most popular category by a significant margin, accounting for over 900 orders, which is much higher than the other categories. This suggests that clothing products are highly demanded by customers and likely represent a substantial portion of the sales volume.
+
+**Electronics** follows with fewer orders, which may imply that these products are less frequently purchased but could have higher price points or profit margins per unit. **Furniture** has the lowest order count among the three, indicating that these items may be less in demand or are higher-priced, causing customers to purchase them less frequently. 
+
+This distribution allows the business to focus on different strategies for each category. For instance, maximizing inventory and variety within the Clothing category could maintain or boost sales volume. For Electronics and Furniture, a targeted marketing strategy or bundling options could potentially increase their order frequency. Understanding customer demand through such insights helps tailor inventory and promotional efforts to align with what customers value most.
+
+![chart4](https://github.com/user-attachments/assets/cb1b05bc-d710-4608-8e21-6e299376b4e9)
+
+### 4.4.Number of orders by payment method
+
+The **Number of Orders by Payment Mode** bar chart provides insights into customer preferences for different payment methods. Cash on Delivery (COD) is by far the most popular payment method, with nearly twice as many orders as the next most preferred option, UPI. This preference indicates that customers may feel more secure paying upon delivery rather than upfront. 
+
+UPI follows as the second most popular mode, which suggests that digital payment methods are gaining traction. Debit Card and Credit Card payments are also used but to a lesser extent, while EMI payments are the least common. This information is valuable for the business as it can focus on optimizing the payment experience for the most popular methods, possibly offering additional incentives for digital payments to promote a smoother, cashless transaction process. Additionally, understanding these preferences can help tailor marketing strategies to target customers based on their payment habits, enhancing the shopping experience and potentially boosting conversions.
+
+![chart2](https://github.com/user-attachments/assets/2f1a3c83-27f1-459a-8c4f-5ff430f46bb5)
 
 ## 5.Machine Learning Applications
 ### 5.1 Linear Regression for Sales Prediction
 
-Model Performance Summary:
-Mean Absolute Error (MAE): 182.78
-This means that, on average, the model's predictions deviate from the actual Amount by around $182.78. While this gives us an idea of the error in our predictions, the significance of this MAE depends on the scale of typical sales amounts. If the majority of sales are relatively low (e.g., under $500), an error of $182 could be considered high.
+Based on the OLS regression results, our model provides valuable insights into the factors influencing sales amount (`Amount`). The **R-squared** value of **0.474** implies that approximately 47.4% of the variability in sales can be explained by the features in the model, such as `Quantity`, `Category`, `Sub-Category`, `PaymentMode`, and the extracted date components (`OrderMonth`, `OrderDayOfWeek`). While this is a moderate R-squared, it suggests that these selected features have a substantial influence on sales, although other unobserved factors may also play a role. The **Adjusted R-squared** of **0.464** is slightly lower, accounting for the complexity of the model by penalizing additional predictors. The minimal difference between R-squared and Adjusted R-squared indicates that the model complexity is not excessive, which is positive for model stability. The **F-statistic** of **46.06** with a highly significant p-value (4.22e-146) confirms that the model, as a whole, significantly improves our understanding of sales variability over a model with no predictors.
 
-R-squared (R²): 0.49
-An R-squared of 0.49 suggests that the model explains about 49% of the variance in the Amount variable. This is moderate, indicating that the model captures some of the factors affecting Amount but leaves about 51% unexplained. This suggests that other variables not included in the model might significantly influence sales amounts, or that linear relationships alone may not fully capture the complexity of the data.
+Examining the coefficients, we see how different variables impact sales. For example, certain categorical variables (`Category` and `Sub-Category`) and payment modes show significant coefficients, indicating that specific product types or payment methods may contribute positively or negatively to sales. Some of the time-based variables, such as `OrderMonth`, also exhibit strong effects, suggesting possible seasonality in sales. The large confidence intervals for some coefficients (e.g., certain product sub-categories) imply variability in their impact, pointing to potential interaction effects that could be explored further.
 
-![Screenshot 2024-11-07 003644](https://github.com/user-attachments/assets/8d8ae656-6ad4-4903-b0b4-e19c8ae19323)
+```plaintext
+    OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Amount   R-squared:                       0.474
+Model:                            OLS   Adj. R-squared:                  0.464
+Method:                 Least Squares   F-statistic:                     46.06
+Date:                Sat, 09 Nov 2024   Prob (F-statistic):          4.22e-146
+Time:                        22:10:31   Log-Likelihood:                -8707.9
+No. Observations:                1200   AIC:                         1.746e+04
+Df Residuals:                    1176   BIC:                         1.759e+04
+Df Model:                          23                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const        181.7437     15.720     11.561      0.000     150.902     212.586
+x1           164.7277     10.199     16.151      0.000     144.717     184.738
+x2             7.3860     10.160      0.727      0.467     -12.547      27.319
+x3             5.9594     10.226      0.583      0.560     -14.104      26.023
+x4           102.2232     44.104      2.318      0.021      15.691     188.755
+x5           323.9293     24.672     13.130      0.000     275.524     372.335
+x6           169.3071     42.040      4.027      0.000      86.826     251.788
+x7           -45.5077     42.166     -1.079      0.281    -128.237      37.221
+x8           179.2034     64.403      2.783      0.005      52.846     305.561
+x9          -384.6236     43.530     -8.836      0.000    -470.029    -299.218
+x10         -132.6832     27.827     -4.768      0.000    -187.280     -78.086
+x11         -102.3424     52.177     -1.961      0.050    -204.712       0.028
+x12         -123.4917     49.899     -2.475      0.013    -221.392     -25.591
+x13          213.4283     62.448      3.418      0.001      90.907     335.950
+x14          466.3590     66.254      7.039      0.000     336.370     596.348
+x15           64.9673     26.992      2.407      0.016      12.009     117.926
+x16         -114.9733     44.027     -2.611      0.009    -201.354     -28.593
+x17         -186.4071     45.998     -4.053      0.000    -276.654     -96.160
+x18          -99.1426     28.960     -3.423      0.001    -155.962     -42.323
+x19         -120.3127     42.019     -2.863      0.004    -202.753     -37.872
+x20          584.7535     76.001      7.694      0.000     435.641     733.866
+x21          569.9769     54.978     10.367      0.000     462.110     677.844
+x22          190.4687     34.081      5.589      0.000     123.601     257.336
+x23          -24.4279     31.181     -0.783      0.434     -85.604      36.748
+x24          225.1620     39.480      5.703      0.000     147.703     302.621
+x25            0.3367     26.040      0.013      0.990     -50.754      51.428
+==============================================================================
+Omnibus:                     1050.131   Durbin-Watson:                   1.949
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            53993.749
+Skew:                           3.775   Prob(JB):                         0.00
+Kurtosis:                      34.982   Cond. No.                     1.12e+16
+==============================================================================
+```
 
-Insights from the Scatter Plot:
-The scatter plot of Actual vs. Predicted Sales Amount shows that the model does relatively well for lower sales amounts (most points are clustered near the origin), but as the actual sales amount increases, the spread between actual and predicted values becomes more pronounced. This indicates the model struggles with higher sales amounts, suggesting it may not generalize well across all sales levels.
+### Residual Analysis and Interesting Findings
 
-Interpretation and Recommendations for the Online Sales Shop:
-Prediction Accuracy for Smaller Sales:
+From the **residuals analysis**, we generated two plots to assess model fit and assumptions. The **histogram of residuals** indicates that most residuals are centered around zero, which is ideal. However, there is a slight right skew, with a few outliers on the high side, suggesting some high sales values are not fully captured by the model. The **scatter plot of residuals versus fitted values** reveals that residuals generally stay close to zero across predicted values, though there is a small fan shape, suggesting potential heteroscedasticity (variance changing with fitted values). This could imply that the model might underperform with higher sales amounts or could be improved with additional predictors or transformations.
 
-The model seems more accurate for smaller sales amounts, which may constitute the majority of daily transactions. This means it could be useful in forecasting typical order values in a routine business context. If the shop relies on predicting regular, lower-value transactions, this model might be sufficient.
-Improvement for Larger Sales Predictions:
+The **histogram of residuals** visualizes the differences between the actual and predicted sales values. This plot provides a quick check on the residual distribution. Ideally, residuals should follow a normal distribution centered around zero, which would suggest that the model's errors are randomly distributed, indicating a good fit.
 
-The accuracy drops for larger sales values, suggesting the model may be missing factors that are important for higher-value sales. To improve prediction accuracy for large orders, consider:
-Adding new features: Explore additional variables that might influence high-value orders, such as customer demographics, purchase history, seasonal factors, or promotional impacts.
-Non-linear models: Experiment with other algorithms like decision trees, random forests, or boosting models, which can capture non-linear relationships better than linear regression.
-Business Application:
+In this histogram, the majority of residuals are centered around zero, indicating that the model performs reasonably well for most predictions. However, there is a visible right skew, with some large positive residuals extending past 1000. This skew suggests the presence of **outliers** or cases where the model underestimates the sales amount. The residuals on the far right could represent high-value sales that our model fails to predict accurately. This could be due to factors not captured by the current features or the potential need for additional interaction terms or polynomial terms to account for nonlinear relationships.
 
-Stock and Resource Planning: The model can provide insights for stock management by predicting the average sales amount and frequency of smaller orders, helping with resource allocation and inventory planning.
-Promotional Strategy: Use the model's predictions to identify trends in smaller sales, which could be leveraged to target promotions and discounts for frequent but lower-value orders.
-Customer Segmentation: Since the model has limited success with larger sales, consider further segmenting customers or products to see if specific groups or categories are driving larger purchases, and design targeted marketing efforts for these groups.
+These observations suggest that, while the model is fairly accurate, there may be room for improvement, particularly in predicting high-value sales. Addressing these residual outliers might involve refining the feature set or trying different model specifications to better capture the variability in the data. This analysis will help determine areas to focus on for model enhancement, particularly to improve predictions for high-sales cases.
 
-![Screenshot 2024-11-07 003518](https://github.com/user-attachments/assets/d24575ed-03cc-40f7-9186-9a3c1cdb2e78)
+![linear1](https://github.com/user-attachments/assets/437ab55b-fd34-4833-9bae-00cc44400bec)
 
 
+The **Residuals vs Fitted Values** plot provides insight into the model's accuracy and any potential patterns or issues in the predictions. In an ideal regression model, residuals should be randomly scattered around the horizontal axis (at zero) with no clear patterns, indicating that the model captures the relationship between the predictors and the target variable effectively. 
 
-### 5.2 Customer Segmentation with K-Nearest Neighbors (KNN)
+In this plot, most residuals are relatively close to zero for lower fitted values, indicating that the model predicts well for lower sales amounts. However, as the fitted values increase, the residuals begin to show greater variance, with some significant positive outliers for predictions above 1000. This pattern suggests that the model may struggle to predict high sales amounts accurately, possibly due to unaccounted variability or nonlinear relationships not captured by the linear model. 
 
-### Interpretation of the Elbow Plot
-The **y-axis** represents the **Within-Cluster Sum of Squares (WCSS)**, which is a measure of the variance within each cluster. The **x-axis** represents the number of clusters (`k`).
-In this plot:There is a sharp decrease in WCSS from `k=1` to `k=3`, indicating that adding clusters up to this point significantly reduces the within-cluster variance.After **k=3**, the decrease in WCSS becomes more gradual, suggesting that adding more clusters yields diminishing improvements in compactness.
+These findings suggest that while the model is reasonably accurate for lower to mid-range sales predictions, there is room for improvement in predicting higher sales amounts. Enhancements could include exploring additional features, nonlinear transformations, or even alternative models that better handle the high variance observed in the predictions for larger values.
 
-### Optimal Number of Clusters
-**k=3** appears to be the "elbow point" in this plot. This is the point where the curve begins to flatten, indicating that three clusters may be optimal, as it balances compactness and interpretability. **k=3** is likely a good choice, as it provides a balance between simplicity and segmentation quality.The elbow plot suggests that **three clusters (k=3)** is an optimal choice for segmenting customers. This choice effectively captures the natural groupings in the data, balancing complexity and accuracy. Moving forward with three clusters allows us to interpret and act on customer segments without introducing unnecessary complexity. This segmentation will support targeted marketing and resource allocation for each group’s unique characteristics.
-
-![Screenshot 2024-11-06 215938](https://github.com/user-attachments/assets/02595688-4f33-4641-82f4-b02c9fcfd188)
-
-2. Silhouette Score Interpretation
-Silhouette Score for k=3: 0.53
-
-The silhouette score measures the cohesion and separation of clusters. Scores range from -1 to +1:
-+1 indicates well-separated clusters, where points are closer to their own cluster center than to others.
-0 indicates overlapping clusters, where points are roughly equidistant between cluster centers.
--1 indicates that points may be in the wrong clusters.
-A silhouette score of 0.53 is considered moderate. It suggests that the clusters are reasonably distinct but could be better separated. The score indicates that while the clusters make sense, some overlap exists, or some points are closer to the boundary between clusters.
-
-Evaluation:
-Although the silhouette score is not perfect, it is reasonable for a real-world dataset. A score above 0.5 indicates fairly good clustering, but there may be room for improvement.
-Silhouette Score: While a silhouette score of 0.53 is acceptable, it suggests that the clusters are not perfectly distinct. In some cases, this could indicate that more distinct clusters might better fit the data, or that the data has some natural overlap between groups.
-
-![Screenshot 2024-11-06 221712](https://github.com/user-attachments/assets/f21b1e35-f5ab-4c47-9431-ca643b9181a1)
+![linearchart2](https://github.com/user-attachments/assets/d92715b1-2c95-4aa2-9f12-b4c9df4466db)
 
 
-### Model Performance Summary:
+### 5.2 Customer Segmentation with KMeans cluster
 
-**Precision, Recall, F1-Score**: The model achieves a perfect score (1.00) for precision, recall, and F1 across all segments. This means that for this specific dataset, the KNN model is performing exceptionally well, correctly classifying each data point into the intended segment.**Accuracy**: The model’s accuracy is 100%, indicating that all predictions match the actual segment labels in the test set.
-Precision: Measures the accuracy of the model when it predicts a specific segment. Precision scores are 1.00 for segments 0 and 1, and 0.95 for segment 2, indicating that the model rarely misclassifies these segments.
-Recall: Measures the model’s ability to correctly identify all instances of a given segment. Recall scores are 1.00 for segments 0 and 1, and 1.00 for segment 2, meaning that the model identifies nearly all instances in each segment.
-F1-Score: The harmonic mean of precision and recall. All segments have high F1-scores (1.00 for segments 0 and 1, and 0.97 for segment 2), indicating balanced precision and recall.
-Overall Accuracy: The model achieved an impressive accuracy of 1.00 (100%), which means it correctly classified every instance in the test set.
-  
-![Screenshot 2024-11-06 220536](https://github.com/user-attachments/assets/8ea8de8b-f72c-4848-8185-cc7e3ee93742)
+The Elbow Method plot helps us determine the optimal number of clusters for customer segmentation. In this graph, the "Within-Cluster Sum of Squares" (WCSS) is plotted against different values of `k` (number of clusters). As `k` increases, the WCSS decreases, indicating that clusters are becoming more compact. However, the rate of decrease starts to slow around `k=3`, forming an "elbow" shape. This suggests that adding more clusters beyond `k=3` does not significantly improve compactness and could lead to diminishing returns. 
 
-2. PCA Visualization of Customer Segments
-The PCA plot reduces the data to two principal components to visualize the segmentation results, showing clear separation between segments:
+Therefore, `k=3` is a suitable choice for our segmentation, as it balances capturing meaningful clusters with minimizing within-cluster variance. This optimal clustering divides customers into three segments, each with distinct purchasing behaviors, which can then be targeted with tailored marketing strategies. This analysis, combined with the silhouette score and visual segmentation, enables us to better understand and engage with our customer base in ways that enhance profitability and customer satisfaction.
 
-Segment 0 (Purple): A compact cluster with high density. This segment likely represents customers with low to medium spending and quantity.
+![kmeans1](https://github.com/user-attachments/assets/648048a4-d56b-49d4-8fc8-cee040e30afd)
 
-Segment 1 (Blue-Green): Another well-defined cluster, but spread out slightly more than Segment 0, possibly indicating medium spending patterns with a bit more variability in quantity.
 
-Segment 2 (Yellow): Spread over a wider area with a few higher-value outliers. This segment likely represents high-value customers who tend to purchase in larger quantities or have higher transaction amounts.
+The customer segmentation analysis reveals insightful patterns in purchasing behavior, based on the clustering of customers into distinct segments. Using the KMeans clustering algorithm on features like `Amount` and `Quantity`, we identified three main customer groups. Segment 0, marked in purple on the visualization, includes customers who tend to have lower spending amounts but a broad range of purchased quantities. This segment might represent customers who make frequent but lower-value purchases, possibly looking for smaller, cost-effective items. Segment 1, shown in teal, represents customers with both low spending amounts and low quantities, possibly indicating single-item purchases or low-budget transactions. This group could consist of casual buyers or those who occasionally make minimal purchases.
 
-Insights from the Visualization:
-The distinct separation of clusters in the PCA plot shows that our features (Amount, Quantity, and location data) were effective in differentiating customer segments.
-Segment 2 appears to have customers who are outliers in terms of spending patterns, which could indicate high-value or high-loyalty customers.
+In contrast, Segment 2, highlighted in yellow, stands out with higher spending values, suggesting a group of high-value customers who invest significantly in their purchases. The variety in the quantity range within this segment implies that these are possibly loyal customers who make more substantial purchases. Segment 2 could be particularly valuable to the business due to their higher average spend, making them ideal candidates for targeted loyalty programs or premium offerings.
 
-- **Cluster Segmentation Plot**:
-  - The scatter plot shows three distinct clusters (Segments 0, 1, and 2) based on `Quantity` and `Amount`.
-  - **Segment 0** (purple): Consists of transactions with lower quantities and lower sales amounts.
-  - **Segment 1** (blue-green): Represents medium quantities and sales amounts.
-  - **Segment 2** (yellow): Includes transactions with higher amounts and varying quantities, suggesting this may represent high-value purchases or bulk orders.
+One interesting observation from this clustering is the potential to develop targeted marketing strategies. By understanding that Segment 0 and Segment 1 may consist of budget-conscious or casual buyers, the business could consider offering these segments promotions or discounts to encourage higher spending. Conversely, high-spend customers in Segment 2 could be engaged with exclusive offers or rewards, building loyalty and enhancing their customer lifetime value. The silhouette score of 0.53 indicates moderate clustering quality, suggesting there’s reasonable separation among these segments but also room for refinement. By experimenting with additional features, such as profit margins or seasonal purchase data, the business could further enhance segmentation, enabling even more precise and effective strategies to engage with each customer type. This segmentation sheds light on diverse customer behaviors, allowing for a data-driven approach to relationship-building and profit maximization.
 
-### Interpretation and Business Implications for the Online Sales Shop:
-1. **Identifying Customer Segments**:
-   - This segmentation model effectively divides customers into three segments based on purchasing behavior, which can help tailor marketing and sales strategies.
-   - **Low-Spending Segment (Segment 0)**: These customers make small, lower-value purchases. They may be occasional buyers or more price-sensitive.
-   - **Mid-Spending Segment (Segment 1)**: Customers in this segment make moderate purchases, potentially representing the typical or average buyer.
-   - **High-Spending Segment (Segment 2)**: This group consists of high-value transactions, possibly from bulk buyers or loyal customers who make larger purchases.
-
-2. **Targeted Marketing Strategies**:
-   - **Segment 0**: Consider promotions or discounts to encourage these customers to increase their order sizes. Incentives like free shipping on minimum orders or bundle deals could be effective.
-   - **Segment 1**: Target this segment with upselling or cross-selling strategies, as they are already making mid-range purchases. Highlight complementary products or upgrades.
-   - **Segment 2**: High-value customers could be offered loyalty rewards or exclusive discounts to retain them and encourage repeat purchases.
-
-3. **Inventory and Resource Planning**:
-   - Knowing the distribution of customer segments can help in planning inventory and staffing based on typical order sizes. For instance, if Segment 2 customers are infrequent but valuable, the shop could focus on keeping items in stock that appeal to this segment without overstocking.
-
-4. **Personalized Customer Experience**:
-   - The shop can use this segmentation to personalize the online shopping experience. For example, based on past purchase behaviors, the website could display different product recommendations, highlight popular products for each segment, or adjust the messaging in email campaigns.
-
-### Summary
-The KNN model has successfully segmented customers into distinct groups with 100% accuracy. These segments provide actionable insights for personalized marketing, inventory management, and customer retention strategies. Leveraging these insights can help increase engagement, optimize inventory, and ultimately boost sales for the online shop.
-
-![Screenshot 2024-11-06 214240](https://github.com/user-attachments/assets/c3db1e97-b221-4577-b665-b5456c1cd9ab)
-
-![Screenshot 2024-11-06 214610](https://github.com/user-attachments/assets/4e90cb99-37e3-4c74-98cb-c2343bdb9019)
-
+![kemans1](https://github.com/user-attachments/assets/d19db4b0-a929-46b2-8d33-a9a7e2619cc9)
 
 ## 6.Conclusions <a name="conclusion"></a>
 
+In conclusion, this analysis provided valuable insights into the sales dynamics and customer behavior for an online retail business. By exploring and visualizing data on monthly profit trends, product profitability, order distribution by category, and payment preferences, we identified key factors influencing sales and customer choices. Predictive modeling using linear regression allowed us to anticipate future sales trends, with significant predictors such as product category, sub-category, and payment method revealing actionable insights. The residual analysis highlighted areas where model accuracy could be improved, especially for higher sales amounts, suggesting the need for further refinement or additional features. Customer segmentation through KMeans clustering effectively categorized customers into three distinct segments, each with unique spending and purchasing behaviors. This segmentation not only highlighted high-value customers but also uncovered potential strategies for engaging budget-conscious buyers. Supported by data-driven insights, these findings empower the business to make informed decisions around product marketing, inventory management, and targeted promotions, ultimately enhancing profitability and customer satisfaction. The analysis successfully answered our initial questions by identifying sales drivers and customer segments, laying a foundation for strategic growth.
 
 ## References <a name="references"></a>
 
