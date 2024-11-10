@@ -170,7 +170,7 @@ UPI follows as the second most popular mode, which suggests that digital payment
 
 ![chart2](https://github.com/user-attachments/assets/2f1a3c83-27f1-459a-8c4f-5ff430f46bb5)
 
-## 5.Machine Learning Applications <a name="section5"></a>
+## 5.Machine Learning Application <a name="section5"></a>
 
 We analyzed online sales data with the intention of extracting actionable insights to enhance sales strategy and shed light on customer behavior. We looked at two main methods of approaches: sale prediction using linear regression and segmentation of customers via KMeans clustering. Thus, the **sales prediction** model would help us understand how such different factors-product categories, payment methods, seasonality of sales-affect the amount of sales. Considering the model's accuracy by analysing the results, it would turn out that our strong predictions and those which may fall short-mostly for high value sales. The insight hinted at possible improvements that could be made to our sales forecast.
 
@@ -271,7 +271,7 @@ One interesting observation from this clustering is the potential to develop tar
 
 ![kemans1](https://github.com/user-attachments/assets/d19db4b0-a929-46b2-8d33-a9a7e2619cc9)
 
-## 6.Conclusions <a name="conclusion"></a>
+## 6.Conclusion <a name="conclusion"></a>
 
 In conclusion, this analysis provided valuable insights into the sales dynamics and customer behavior for an online retail business. By exploring and visualizing data on monthly profit trends, product profitability, order distribution by category, and payment preferences, we identified key factors influencing sales and customer choices. Predictive modeling using linear regression allowed us to anticipate future sales trends, with significant predictors such as product category, sub-category, and payment method revealing actionable insights. The residual analysis highlighted areas where model accuracy could be improved, especially for higher sales amounts, suggesting the need for further refinement or additional features. Customer segmentation through KMeans clustering effectively categorized customers into three distinct segments, each with unique spending and purchasing behaviors. This segmentation not only highlighted high-value customers but also uncovered potential strategies for engaging budget-conscious buyers. Supported by data-driven insights, these findings empower the business to make informed decisions around product marketing, inventory management, and targeted promotions, ultimately enhancing profitability and customer satisfaction. The analysis successfully answered our initial questions by identifying sales drivers and customer segments, laying a foundation for strategic growth.
 
