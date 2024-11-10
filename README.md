@@ -54,22 +54,12 @@ For this particular project the data is sourced from a dataset provided by Samru
 
 ### 2.1. Dataset Overview <a name="sec2p1"></a>
 
-One peculiar facet of the dataset is the following columns which are regarded as able to provide innovative information of clients of diverse purchase elements of interest and their purchase patterns:
+In this dataset overview, several columns offer valuable insights into customer purchasing patterns and financial performance, helping us better understand client behavior. Each order is identified by a unique **Order ID**, allowing us to trace individual transactions. The **Order Date** records when each purchase was made, providing an opportunity to analyze sales trends over time.
 
-- **Order ID**: This is a distinct number that is allocated to every single order so that every order can be traced.
+Details such as **Customer Name**, **State**, and **City** give us information about customer locations, which can be used to refine geographic targeting strategies. **Amount** and **Profit** indicate the revenue and profitability of each order, essential metrics for evaluating the business's financial performance. The **Quantity** column reflects the number of items in each order, allowing for the analysis of bulk purchasing or large orders.
 
-- **Order Date**: Refers to the day the order is placed. It can be useful in determining the trends in sales over time
+Product categorization is covered by the **Category** and **Sub-Category** columns, which classify products into types (like Electronics or Furniture) and their sub-types. This segmentation is crucial for market analysis and identifying high-performing product categories. Finally, the **Payment Mode** column reveals the type of payment used (such as Credit Card or COD), which highlights customer payment preferences and supports targeted payment-related strategies.
 
-- **Customer Name, State, City**: Such details help to figure out the region of the customers and assist in targeting the market more effectively or geographically.
-
-- **Amount and Profit**: The amount and profit from each order are shown. These are the most important measures for the assessment of financial results.
-
-- **Quantity**: Is the number of items contained in orders which can assist in large orders or bulk purchasing.
-
-- **Category and sub-category**: type of products so that products may be classified into categories (e.g. Electronics, Furniture) and sub-categories of the same types.
-
-- **Payment Mode**: This shows the type of payment made by the customer (e.g. Credit Card, COD) indicating what payment methods are preferred by the clients.
-  
 ```
 First 5 rows of data:
 
@@ -81,13 +71,8 @@ First 5 rows of data:
 | B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 57     | 7      |
 | B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 227    | 48     |
 ```
+Key columns for analysis include **Quantity**, **Amount**, and **Profit** (for financial performance), **Category** and **Sub-Category** (for segmentation), **Order Date** (for sales trend analysis), and **Payment Mode** (to understand preferred payment methods). This data structure provides a comprehensive view for deeper analysis and strategy development.
 
-#### Important Columns for Analysis
-
-- **Quantity**, **Amount** and **Profit**: Critical for understanding financial performance.
-- **Category** and **Sub-Category**: Essential for market segmentation analysis.
-- **Order Date**: For trend analysis over time.
-- **Payment Mode**:For analyzing payment method frequency usage.
 
 ## 3.Data Preparation and Cleaning <a name="section3"></a>
 
