@@ -10,7 +10,7 @@
 ## Table of contents
 1. [Introduction](#introduction)
 
-2. [Data source](#section2)
+2. [Data Sources](#section2)
    
     2.1. [Dataset Overview](#sec2p1)
     
@@ -149,11 +149,7 @@ Interestingly, **Tables** and **Trousers** also contribute significantly, even t
 
 ### 4.3.Number of orders by category <a name="sec4p3"></a>
 
-The **Number of Orders by Category** chart highlights the distribution of orders across major product categories, providing insight into consumer preferences. **Clothing** is the most popular category by a significant margin, accounting for over 900 orders, which is much higher than the other categories. This suggests that clothing products are highly demanded by customers and likely represent a substantial portion of the sales volume.
-
-**Electronics** follows with fewer orders, which may imply that these products are less frequently purchased but could have higher price points or profit margins per unit. **Furniture** has the lowest order count among the three, indicating that these items may be less in demand or are higher-priced, causing customers to purchase them less frequently. 
-
-This distribution allows the business to focus on different strategies for each category. For instance, maximizing inventory and variety within the Clothing category could maintain or boost sales volume. For Electronics and Furniture, a targeted marketing strategy or bundling options could potentially increase their order frequency. Understanding customer demand through such insights helps tailor inventory and promotional efforts to align with what customers value most.
+The Number of Orders by Category chart highlights the distribution of orders across major product categories, providing insight into consumer preferences. Clothing is the most popular category by a significant margin, accounting for over 900 orders, which is much higher than the other categories. This suggests that clothing products are highly demanded by customers and likely represent a substantial portion of the sales volume.Electronics follows with fewer orders, which may imply that these products are less frequently purchased but could have higher price points or profit margins per unit. Furniture has the lowest order count among the three, indicating that these items may be less in demand or are higher-priced, causing customers to purchase them less frequently. This distribution allows the business to focus on different strategies for each category. For example, increasing the number of items and clothing categories can maintain or increase sales volume. For electronics and furniture, a targeted marketing strategy can increase their order intake by offering more packaging options. Understanding customer demand through these insights can help adjust inventory and marketing activities to match what customers value.
 
 ![chart4](https://github.com/user-attachments/assets/cb1b05bc-d710-4608-8e21-6e299376b4e9)
 
@@ -173,7 +169,11 @@ For **customer segmentation**, KMeans clustering was utilised in order to segmen
 
 ### 5.1 Linear Regression for Sales Prediction <a name="sec5p1"></a>
 
-Based on the OLS regression results, our model provides valuable insights into the factors influencing sales amount (`Amount`). The **R-squared** value of **0.474** implies that approximately 47.4% of the variability in sales can be explained by the features in the model, such as `Quantity`, `Category`, `Sub-Category`, `PaymentMode`, and the extracted date components (`OrderMonth`, `OrderDayOfWeek`). While this is a moderate R-squared, it suggests that these selected features have a substantial influence on sales, although other unobserved factors may also play a role. The **Adjusted R-squared** of **0.464** is slightly lower, accounting for the complexity of the model by penalizing additional predictors. The minimal difference between R-squared and Adjusted R-squared indicates that the model complexity is not excessive, which is positive for model stability. The **F-statistic** of **46.06** with a highly significant p-value (4.22e-146) confirms that the model, as a whole, significantly improves our understanding of sales variability over a model with no predictors.
+Based on the OLS regression results, our model provides valuable insights into the factors influencing sales amount (`Amount`). The **R-squared** value of **0.474** implies that approximately 47.4% of the variability in sales can be explained by the features in the model, such as `Quantity`, `Category`, `Sub-Category`, `PaymentMode`, and the extracted date components (`OrderMonth`, `OrderDayOfWeek`). While this is a moderate R-squared, it suggests that these selected features have a substantial influence on sales, although other unobserved factors may also play a role. The **Adjusted R-squared** of **0.464** is slightly lower, accounting for the complexity of the model by penalizing additional predictors. The minimal difference between R-squared and Adjusted R-squared indicates that the model complexity is not excessive, which is positive for model stability. The **F-statistic** of **46.06** with a highly significant p-value (4.22e-146) confirms that the model, as a whole, significantly improves our understanding of sales variability over a model with no predictors.x1 has a positive coefficient (164.7277), indicating that as this variable increases, the sales amount is expected to increase, holding all other variables constant. Variables with very low p-values (below 0.05) are considered statistically significant, implying a strong relationship with the target variable. For instance, x1, x5, x10, x18, x20, and x21 have very low p-values, indicating a significant influence on Amount.
+
+Some variables, such as x2 and x23, have high p-values (e.g., 0.467 and 0.434), meaning they are not statistically significant predictors of the target variable in this model. This lack of significance may suggest that these variables do not contribute meaningfully to predicting sales and could potentially be removed to simplify the model.
+
+The Durbin-Watson statistic is close to 2 (1.949), suggesting no strong autocorrelation in the residuals, which is good for the model's assumptions. However, the Omnibus and Jarque-Bera test results show high skewness and kurtosis in the residuals, indicating that the residuals are not normally distributed. This finding is consistent with the skew and outliers observed in the residual plots. These non-ideal residual characteristics suggest that the model could be further improved, perhaps by transforming the data or exploring additional interaction terms to better capture variability in high sales amounts.
 
 Examining the coefficients, we see how different variables impact sales. For example, certain categorical variables (`Category` and `Sub-Category`) and payment modes show significant coefficients, indicating that specific product types or payment methods may contribute positively or negatively to sales. Some of the time-based variables, such as `OrderMonth`, also exhibit strong effects, suggesting possible seasonality in sales. The large confidence intervals for some coefficients (e.g., certain product sub-categories) imply variability in their impact, pointing to potential interaction effects that could be explored further.
 
@@ -225,10 +225,7 @@ Skew:                           3.775   Prob(JB):                         0.00
 Kurtosis:                      34.982   Cond. No.                     1.12e+16
 ==============================================================================
 ```
-
-#### Residual Analysis and Interesting Findings
-
-From the **residuals analysis**, we generated two plots to assess model fit and assumptions. The **histogram of residuals** indicates that most residuals are centered around zero, which is ideal. However, there is a slight right skew, with a few outliers on the high side, suggesting some high sales values are not fully captured by the model. The **scatter plot of residuals versus fitted values** reveals that residuals generally stay close to zero across predicted values, though there is a small fan shape, suggesting potential heteroscedasticity (variance changing with fitted values). This could imply that the model might underperform with higher sales amounts or could be improved with additional predictors or transformations.
+The Histogram of Residuals and the Residuals vs Fitted Values plot both provide valuable insights into the performance of our regression model, revealing areas where the model performs well and where it could be improved. 
 
 The **histogram of residuals** visualizes the differences between the actual and predicted sales values. This plot provides a quick check on the residual distribution. Ideally, residuals should follow a normal distribution centered around zero, which would suggest that the model's errors are randomly distributed, indicating a good fit.
 
@@ -252,7 +249,7 @@ These findings suggest that while the model is reasonably accurate for lower to 
 
 The Elbow Method plot helps us determine the optimal number of clusters for customer segmentation. In this graph, the "Within-Cluster Sum of Squares" (WCSS) is plotted against different values of `k` (number of clusters). As `k` increases, the WCSS decreases, indicating that clusters are becoming more compact. However, the rate of decrease starts to slow around `k=3`, forming an "elbow" shape. This suggests that adding more clusters beyond `k=3` does not significantly improve compactness and could lead to diminishing returns. 
 
-Therefore, `k=3` is a suitable choice for our segmentation, as it balances capturing meaningful clusters with minimizing within-cluster variance. This optimal clustering divides customers into three segments, each with distinct purchasing behaviors, which can then be targeted with tailored marketing strategies. This analysis, combined with the silhouette score and visual segmentation, enables us to better understand and engage with our customer base in ways that enhance profitability and customer satisfaction.
+Therefore, `k=3` is a good choice for our segmentation, because it balances capturing meaningful clusters with minimizing within-cluster variance. This optimal clustering divides customers into 3 segments, each with distinct purchasing behaviors.
 
 ![kmeans1](https://github.com/user-attachments/assets/648048a4-d56b-49d4-8fc8-cee040e30afd)
 
@@ -269,16 +266,52 @@ One interesting observation from this clustering is the potential to develop tar
 
 In conclusion, this analysis provided valuable insights into the sales dynamics and customer behavior for an online retail business. By exploring and visualizing data on monthly profit trends, product profitability, order distribution by category, and payment preferences, we identified key factors influencing sales and customer choices. Predictive modeling using linear regression allowed us to anticipate future sales trends, with significant predictors such as product category, sub-category, and payment method revealing actionable insights. The residual analysis highlighted areas where model accuracy could be improved, especially for higher sales amounts, suggesting the need for further refinement or additional features. Customer segmentation through KMeans clustering effectively categorized customers into three distinct segments, each with unique spending and purchasing behaviors. This segmentation not only highlighted high-value customers but also uncovered potential strategies for engaging budget-conscious buyers. Supported by data-driven insights, these findings empower the business to make informed decisions around product marketing, inventory management, and targeted promotions, ultimately enhancing profitability and customer satisfaction. The analysis successfully answered our initial questions by identifying sales drivers and customer segments, laying a foundation for strategic growth.
 
-## References <a name="references"></a>
+## 7.References <a name="references"></a>
 
-- [1]  Anaconda Distribution
-https://www.anaconda.com/
+#### Data Sources
 
-- [2] Python Software Foundation
-https://www.python.org/
+- [1] **Kaggle Dataset - Sales Data**  
+   Bhosale, S. (n.d.). *Online Retail Sales Dataset*. Retrieved from [Kaggle](https://www.kaggle.com/).
+  
+#### Software and Libraries
 
-- [3] Project Jupyter
-https://jupyter.org/
+- [2] **GitHub Repository**  
+   Open-source contributors. (n.d.). *GitHub Repositories for Data Science*. GitHub. Retrieved from [https://github.com/](https://github.com/).  
+
+- [3] **Scikit-Learn Library**  
+   Scikit-Learn was used to implement machine learning models like KMeans clustering and linear regression, along with data preprocessing.
+
+- [4] **Seaborn and Matplotlib Libraries**  
+   These libraries enabled visualizations like bar charts, scatter plots, and trend lines, supporting the descriptive analysis.
+
+- [5] **Pandas Library**  
+   Pandas was utilized for data manipulation, merging datasets, and performing descriptive analysis on both numerical and categorical features.
+
+- [6] **Statsmodels Library**  
+   Statsmodels provided OLS (Ordinary Least Squares) regression results, giving statistical insights into the relationships between features and the target variable.
+
+- [7] **Silhouette Analysis for Clustering Validation**  
+   Silhouette analysis was applied in the KMeans clustering process to validate the quality of customer segmentation.
+
+- [8] **Date Formatting and Time Series Analysis**  
+   Time series analysis techniques were used to process and analyze 'Order Date' data, examining trends, seasonality, and month-wise sales variations.
+
+- [9] **Jupyter Notebook**  
+   Jupyter Notebook facilitated interactive and reproducible analysis, enabling documentation of the analytical process.
+   
+- [10] **Anaconda Distribution**  
+   Anaconda was used as the primary distribution for Python and data science packages, simplifying environment management and dependency resolution.
+
+- [11] **Python Software Foundation**  
+   Python served as the primary programming language, offering robust libraries and a versatile environment for data analysis and machine learning.
+
+####  Methodologies and Guides
+
+- [12] **HSB3119-Theory Summary**  
+   This provided by teacher Emmanuel Lance Christopher VI M. Plan guided class MAS02 the approach to data science.
+
+
+
 
 
 
