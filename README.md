@@ -6,6 +6,15 @@
 
 ## Team Member Evaluation Of Teamwork
 
+| Student Number | Student Name        | Tasks done                                                     | Remarks by Leader (if any)        | Student evaluation |
+|----------------|---------------------|-----------------------------------------------------------------|-----------------------------------|---------------------|
+| 22080295       | Lê Duy Anh (Leader) | Do Machine Learning Application part                           |                                   | 100%               |
+| 22080308       | Lê Minh Đức         | Do ‘Monthly Profit Trend’ and ‘Top 10 most profit product’ charts part |                                   | 100%               |
+| 22080302       | Nguyễn Hoàng Bách   | Do Data Preparation and Cleaning part                          |                                   | 100%               |
+| 22080340       | Đinh Văn Thái Sơn   | Do ‘Number of orders by category’ and ‘Number of orders by payment method’ charts part | Did the most work. Excellent! | 100%               |
+| 22080312       | Phạm Minh Hiếu      | Do Introduction and Data Sources part                          |                                   | 100%               |
+| 22080332       | Hoàng Phương Nga    | Make the slide, Do Conclusion part                             |                                   | 100%               |
+
 
 ## Table of contents
 1. [Introduction](#introduction)
@@ -18,7 +27,7 @@
  
 4. [Charts](#section4)
    
-    4.1. [Mothly Profit Trend](#sec4p1)
+    4.1. [Monthly Profit Trend](#sec4p1)
    
     4.2. [Top 10 most profit product](#sec4p2)
    
@@ -131,7 +140,7 @@ In total, the cleaned dataset consists of 1,500 records, with a total sales 'Amo
 - **Total Profit**: 36,963
 
 ## 4.Charts <a name="section4"></a>
-### 4.1.Mothly Profit Trend <a name="sec4p1"></a>
+### 4.1.Monthly Profit Trend <a name="sec4p1"></a>
 
 The **Monthly Profit Trend** chart provides valuable insights into the variations in profit over the year. This line chart shows a significant dip in profits around May, indicating a potential seasonal low point in sales or possibly a period of increased returns or operational costs. The profits steadily increase after this dip, with a sharp peak in November, suggesting a strong sales period, possibly due to seasonal events, promotions, or holidays.
 
@@ -139,7 +148,7 @@ Observing these patterns can help the business identify high and low-performing 
 
 ![chart1](https://github.com/user-attachments/assets/54ce9459-c59f-425c-b72d-2036d641a84e)
 
-### 4.2.Top 10 most profit product <a name="sec4p2"></a>
+### 4.2.Top 10 most profit products <a name="sec4p2"></a>
 
 The **Top 10 Products by Total Profit** horizontal bar chart provides a clear view of which products contribute the most to the company’s profit. At the top of the list are **Printers** and **Bookcases**, generating the highest profits, followed by **Sarees** and **Accessories**. This insight suggests that items like printers and bookcases might be high-margin products or in high demand, which could drive the majority of the store's profitability.
 
