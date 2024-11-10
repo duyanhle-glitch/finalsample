@@ -226,7 +226,7 @@ Kurtosis:                      34.982   Cond. No.                     1.12e+16
 ==============================================================================
 ```
 
-### Residual Analysis and Interesting Findings
+#### Residual Analysis and Interesting Findings
 
 From the **residuals analysis**, we generated two plots to assess model fit and assumptions. The **histogram of residuals** indicates that most residuals are centered around zero, which is ideal. However, there is a slight right skew, with a few outliers on the high side, suggesting some high sales values are not fully captured by the model. The **scatter plot of residuals versus fitted values** reveals that residuals generally stay close to zero across predicted values, though there is a small fan shape, suggesting potential heteroscedasticity (variance changing with fitted values). This could imply that the model might underperform with higher sales amounts or could be improved with additional predictors or transformations.
 
