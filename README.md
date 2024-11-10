@@ -72,6 +72,12 @@ One peculiar facet of the dataset is the following columns which are regarded as
 
 ![Screenshot 2024-11-09 231317](https://github.com/user-attachments/assets/c6198167-26ad-44af-b241-31176f759f5e)
 
+#### Important Columns for Analysis
+
+- **Quantity**, **Amount** and **Profit**: Critical for understanding financial performance.
+- **Category** and **Sub-Category**: Essential for market segmentation analysis.
+- **Order Date**: For trend analysis over time.
+- **Payment Mode**:For analyzing payment method frequency usage.
 
 ## 3.Data Preparation and Cleaning <a name="section3"></a>
 
