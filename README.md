@@ -69,8 +69,18 @@ One peculiar facet of the dataset is the following columns which are regarded as
 - **Category and sub-category**: type of products so that products may be classified into categories (e.g. Electronics, Furniture) and sub-categories of the same types.
 
 - **Payment Mode**: This shows the type of payment made by the customer (e.g. Credit Card, COD) indicating what payment methods are preferred by the clients.
+  
+```
+First 5 rows of data:
 
-![Screenshot 2024-11-09 231317](https://github.com/user-attachments/assets/c6198167-26ad-44af-b241-31176f759f5e)
+| Order ID | Order Date | CustomerName |      State     |    City    | Amount | Profit |
+|----------|------------|--------------|----------------|------------|--------|--------|
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 5729   | 64     |
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 671    | 114    |
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 443    | 11     |
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 57     | 7      |
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 227    | 48     |
+```
 
 #### Important Columns for Analysis
 
