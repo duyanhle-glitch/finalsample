@@ -175,9 +175,7 @@ UPI follows as the second most popular mode, which suggests that digital payment
 
 ## 5.Machine Learning Application <a name="section5"></a>
 
-We analyzed online sales data with the intention of extracting actionable insights to enhance sales strategy and shed light on customer behavior. We looked at two main methods of approaches: sale prediction using linear regression and segmentation of customers via KMeans clustering. Thus, the **sales prediction** model would help us understand how such different factors-product categories, payment methods, seasonality of sales-affect the amount of sales. Considering the model's accuracy by analysing the results, it would turn out that our strong predictions and those which may fall short-mostly for high value sales. The insight hinted at possible improvements that could be made to our sales forecast.
-
-For **customer segmentation**, KMeans clustering was utilised in order to segment customers into a number of types based on their purchase patterns. This gave us three important clusters: the frugal spenders, the mid-low spenders, and the high-value customers. With this insight, more relevant marketing campaigns can be developed, such as promotional campaigns for the budget-conscious buyers to incentivize them to buy more, or loyalty programs for the high-value customers. Combined, these findings build a more instructive picture of what drives sales and how to better meet the needs of each customer type. This could thus help us construct more robust, data-informed strategies for growth and customer engagement.
+We analyzed online sales data with the intention of extracting actionable insights to enhance sales strategy and shed light on customer behavior. We looked at two main methods of approaches: sale prediction using linear regression and segmentation of customers via KMeans clustering.
 
 ### 5.1 Linear Regression for Sales Prediction <a name="sec5p1"></a>
 
