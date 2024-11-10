@@ -10,38 +10,49 @@
 ## Table of contents
 1. [Introduction](#introduction)
 
-2. [Data source](#section3)
-    1. [Dataset Overview](#sec3p1)
+2. [Data source](#section2)
+   
+    2.1. [Dataset Overview](#sec2p1)
     
-3. [Relationships between variables](#section4)
-    1. [Visualize relationships between numerical variables with pairplot](#sec4p1)
-    2. [Investigate relationships between tip amount and the other variables](#sec4p2)
-    3. [Does the amount spent depend on party size?](#sec4p3)
-    4. [Classification](#sec4p4)
-    
-6. [Work done by other people on the Tips data set](#section5)
-    
+3. [Data Preparation and Cleaning](#section3)
+ 
+4. [Charts](#section4)
+   
+    4.1. [Mothly Profit Trend](#sec4p1)
+   
+    4.2. [Top 10 most profit product](#sec4p2)
+   
+    4.3. [Number of orders by category](#sec4p3)
+   
+    4.4. [Number of orders by payment method](#sec4p4)
+
+5. [Machine Learning Application](#section5)
+
+   5.1.[Linear Regression for Sales Prediction](#sec5p1)
+
+   5.2.[Customer Segmentation with KMeans cluster](#sec5p2)
+   
 7. [Conclusion](#conclusion)
 
-9. [References](#references)
+8. [References](#references)
 
 
 ## 1.Introduction  <a name="introduction"></a>
 
 The purpose of this data report is to analyze sales and customer behavior for an online retail business operating in India. The dataset contains information on transactions, including product categories, payment methods, order quantities, and profit margins. The business aims to understand the key drivers of sales and identify potential segments within its customer base to enhance targeting strategies and optimize inventory management. To achieve this, we explore and analyze various sales metrics and patterns, such as monthly profit trends, order distributions by payment mode, and top-performing products.
 
-In our analysis, we approach the problem from both descriptive and predictive angles. Descriptive analytics provide insights into existing sales patterns, such as which products and categories yield the highest profits and how customers prefer to pay for their purchases. Visualizations like monthly profit trends and the distribution of orders by category help uncover these trends, allowing the team to spot seasonality effects and popular payment methods. Predictive analytics, including regression modeling, aim to forecast future sales based on historical patterns, supporting inventory planning and demand prediction. 
+We will tackle the problem from both a descriptive and predictive perspective in our analysis. The descriptive analytics will explain what exists regarding sales patterns, the most profitable types of products and categories, while it will also let customers know their preferred payment options for the items they purchase. Visualizations like monthly profit trends and the distribution of orders by category help uncover these trends, allowing the team to spot seasonality effects and popular payment methods. Predictive analytics, including regression modeling, aim to forecast future sales based on historical patterns, supporting inventory planning and demand prediction.
 
-Additionally, we employ customer segmentation using KMeans clustering to classify customers based on purchasing behavior, such as the quantity and value of purchases. This segmentation helps identify different customer types and enables the business to develop targeted marketing strategies. By leveraging a combination of statistical models and machine learning techniques, this report seeks to answer critical business questions around sales prediction, customer preferences, and product performance, ultimately guiding data-driven decision-making for improved profitability and customer satisfaction.
+Additionally, we employ customer segmentation using KMeans clustering to classify customers based on purchasing behavior, such as the quantity and value of purchases. This will help in segmenting different customer types and hence come up with specific marketing strategies targeted towards the business. By using the combination of several statistical models and machine learning techniques, this report tries to answer some of the fundamental business questions with respect to sales prediction, customer preference, and product performance to inform data-driven decisions toward improving profitability and enhancing customer satisfaction.
 
-## 2. Data Sources <a name="section3"></a>
+## 2. Data Sources <a name="section2"></a>
 
-For this particular project the data is sourced from a dataset provided by  Samruddhi Bhosale on Kaggle and through a dataset available on Github. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
+For this particular project the data is sourced from a dataset provided by Samruddhi Bhosale on Kaggle and through a dataset available on Github. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
 
 - **Orders.csv**: Contains Order IDs, order dates, customer names, and locations, which give us a snapshot of who the customers are and where they’re from.
 - **Details.csv**: Adds specific order details linked to each Order ID, allowing us to understand each purchase’s unique characteristics.
 
-### 2.1. Dataset Overview <a name="sec3p1"></a>
+### 2.1. Dataset Overview <a name="sec2p1"></a>
 
 One peculiar facet of the dataset is the following columns which are regarded as able to provide innovative information of clients of diverse purchase elements of interest and their purchase patterns:
 
@@ -112,14 +123,14 @@ Additionally, the data was checked for duplicates, which were removed to prevent
 
 In total, the cleaned dataset consists of 1,500 records, with a total sales 'Amount' of 437,771, a total 'Quantity' of 5,615, and a total 'Profit' of 36,963. These summary values offer a high-level perspective on the data’s scope and scale, setting a foundation for detailed analysis and model development.
 
-Totals
+#### Totals
 
 - **Total Amount**: 437,771
 - **Total Quantity**: 5,615
 - **Total Profit**: 36,963
 
-## 4.Charts
-### 4.1.Mothly Profit Trend
+## 4.Charts <a name="section4"></a>
+### 4.1.Mothly Profit Trend <a name="sec4p1"></a>
 
 The **Monthly Profit Trend** chart provides valuable insights into the variations in profit over the year. This line chart shows a significant dip in profits around May, indicating a potential seasonal low point in sales or possibly a period of increased returns or operational costs. The profits steadily increase after this dip, with a sharp peak in November, suggesting a strong sales period, possibly due to seasonal events, promotions, or holidays.
 
@@ -127,7 +138,7 @@ Observing these patterns can help the business identify high and low-performing 
 
 ![chart1](https://github.com/user-attachments/assets/54ce9459-c59f-425c-b72d-2036d641a84e)
 
-### 4.2.Top 10 most profit product
+### 4.2.Top 10 most profit product <a name="sec4p2"></a>
 
 The **Top 10 Products by Total Profit** horizontal bar chart provides a clear view of which products contribute the most to the company’s profit. At the top of the list are **Printers** and **Bookcases**, generating the highest profits, followed by **Sarees** and **Accessories**. This insight suggests that items like printers and bookcases might be high-margin products or in high demand, which could drive the majority of the store's profitability.
 
@@ -135,7 +146,7 @@ Interestingly, **Tables** and **Trousers** also contribute significantly, even t
 
 ![chart3](https://github.com/user-attachments/assets/91a19bbf-ba81-4751-9cd4-3063aea20454)
 
-### 4.3.Number of orders by category
+### 4.3.Number of orders by category <a name="sec4p3"></a>
 
 The **Number of Orders by Category** chart highlights the distribution of orders across major product categories, providing insight into consumer preferences. **Clothing** is the most popular category by a significant margin, accounting for over 900 orders, which is much higher than the other categories. This suggests that clothing products are highly demanded by customers and likely represent a substantial portion of the sales volume.
 
@@ -145,7 +156,7 @@ This distribution allows the business to focus on different strategies for each 
 
 ![chart4](https://github.com/user-attachments/assets/cb1b05bc-d710-4608-8e21-6e299376b4e9)
 
-### 4.4.Number of orders by payment method
+### 4.4.Number of orders by payment method <a name="sec4p4"></a>
 
 The **Number of Orders by Payment Mode** bar chart provides insights into customer preferences for different payment methods. Cash on Delivery (COD) is by far the most popular payment method, with nearly twice as many orders as the next most preferred option, UPI. This preference indicates that customers may feel more secure paying upon delivery rather than upfront. 
 
@@ -153,8 +164,8 @@ UPI follows as the second most popular mode, which suggests that digital payment
 
 ![chart2](https://github.com/user-attachments/assets/2f1a3c83-27f1-459a-8c4f-5ff430f46bb5)
 
-## 5.Machine Learning Applications
-### 5.1 Linear Regression for Sales Prediction
+## 5.Machine Learning Applications <a name="section5"></a>
+### 5.1 Linear Regression for Sales Prediction <a name="sec5p1"></a>
 
 Based on the OLS regression results, our model provides valuable insights into the factors influencing sales amount (`Amount`). The **R-squared** value of **0.474** implies that approximately 47.4% of the variability in sales can be explained by the features in the model, such as `Quantity`, `Category`, `Sub-Category`, `PaymentMode`, and the extracted date components (`OrderMonth`, `OrderDayOfWeek`). While this is a moderate R-squared, it suggests that these selected features have a substantial influence on sales, although other unobserved factors may also play a role. The **Adjusted R-squared** of **0.464** is slightly lower, accounting for the complexity of the model by penalizing additional predictors. The minimal difference between R-squared and Adjusted R-squared indicates that the model complexity is not excessive, which is positive for model stability. The **F-statistic** of **46.06** with a highly significant p-value (4.22e-146) confirms that the model, as a whole, significantly improves our understanding of sales variability over a model with no predictors.
 
@@ -231,7 +242,7 @@ These findings suggest that while the model is reasonably accurate for lower to 
 ![linearchart2](https://github.com/user-attachments/assets/d92715b1-2c95-4aa2-9f12-b4c9df4466db)
 
 
-### 5.2 Customer Segmentation with KMeans cluster
+### 5.2 Customer Segmentation with KMeans cluster <a name="sec5p2"></a>
 
 The Elbow Method plot helps us determine the optimal number of clusters for customer segmentation. In this graph, the "Within-Cluster Sum of Squares" (WCSS) is plotted against different values of `k` (number of clusters). As `k` increases, the WCSS decreases, indicating that clusters are becoming more compact. However, the rate of decrease starts to slow around `k=3`, forming an "elbow" shape. This suggests that adding more clusters beyond `k=3` does not significantly improve compactness and could lead to diminishing returns. 
 
