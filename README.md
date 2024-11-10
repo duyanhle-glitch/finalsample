@@ -47,7 +47,7 @@ Additionally, we employ customer segmentation using KMeans clustering to classif
 
 ## 2. Data Sources <a name="section2"></a>
 
-For this particular project the data is sourced from a dataset provided by Samruddhi Bhosale on Kaggle and through a dataset available on Github. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
+For this particular project the data is sourced from a dataset provided by Samruddhi Bhosale on Kaggle. The dataset on Kaggle had these two files at its core: Orders.csv and Details.csv which are now brought together for easier viewing and analysis.
 
 - **Orders.csv**: Contains Order IDs, order dates, customer names, and locations, which give us a snapshot of who the customers are and where they’re from.
 - **Details.csv**: Adds specific order details linked to each Order ID, allowing us to understand each purchase’s unique characteristics.
