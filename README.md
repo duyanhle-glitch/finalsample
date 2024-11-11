@@ -259,7 +259,7 @@ These findings suggest that while the model is reasonably accurate for lower to 
 
 ### 5.2 Customer Segmentation with KMeans cluster <a name="sec5p2"></a>
 
-In this analysis, we use KMeans clustering to perform customer segmentation based on key purchasing behavior indicators, specifically Amount (total sales amount) and Quantity (number of items purchased). By segmenting customers into distinct groups, we can better understand and target customer types, identify high-value groups, and tailor marketing strategies accordingly.
+In this analysis, the KMeans clustering technique is utilized to subdivide customers based on the key indicators of purchasing behavior, Amount (the overall sales performance) and Quantity (the number of items bought). By doing so, it becomes easier to study different types of customers, distinguish high-value segments, and design the appropriate marketing strategy.
 
 The Elbow Method plot helps us determine the optimal number of clusters for customer segmentation. In this graph, the "Within-Cluster Sum of Squares" (WCSS) is plotted against different values of `k` (number of clusters). As `k` increases, the WCSS decreases, indicating that clusters are becoming more compact. However, the rate of decrease starts to slow around `k=3`, forming an "elbow" shape. This suggests that adding more clusters beyond `k=3` does not significantly improve compactness and could lead to diminishing returns. 
 
