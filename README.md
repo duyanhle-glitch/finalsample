@@ -46,7 +46,7 @@
 8. [References](#references)
 
 
-## 1.Introduction  <a name="introduction"></a>
+## 1. Introduction  <a name="introduction"></a>
 
 The purpose of this data report is to analyze sales and customer behavior for an online retail business operating in India. The dataset contains information on transactions, including product categories, payment methods, order quantities, and profit margins. The business aims to understand the key drivers of sales and identify potential segments within its customer base to enhance targeting strategies and optimize inventory management. To achieve this, we explore and analyze various sales metrics and patterns, such as monthly profit trends, order distributions by payment mode, and top-performing products.
 
@@ -84,7 +84,7 @@ Product categorization is covered by the **Category** and **Sub-Category** colum
 Key columns for analysis include **Quantity**, **Amount**, and **Profit** (for financial performance), **Category** and **Sub-Category** (for segmentation), **Order Date** (for sales trend analysis), and **Payment Mode** (to understand preferred payment methods). This data structure provides a comprehensive view for deeper analysis and strategy development.
 
 
-## 3.Data Preparation and Cleaning <a name="section3"></a>
+## 3. Data Preparation and Cleaning <a name="section3"></a>
 
 The data preparation and cleaning process is crucial in preparing the dataset for analysis and ensuring accurate results. Initially, we performed a thorough check of the data’s structure, data types, and completeness by examining its summary statistics, types, and sample rows. The dataset contains 1,500 entries with 11 columns, including both numerical columns (such as 'Amount,' 'Profit,' and 'Quantity') and categorical columns (like 'CustomerName,' 'State,' 'City,' 'Category,' 'Sub-Category,' and 'PaymentMode'). This initial examination indicated no missing values, making the dataset complete and eliminating the need for imputation.
 #### Data Information
@@ -139,7 +139,7 @@ In total, the cleaned dataset consists of 1,500 records, with a total sales 'Amo
 - **Total Quantity**: 5,615
 - **Total Profit**: 36,963
 
-## 4.Charts <a name="section4"></a>
+## 4. Charts <a name="section4"></a>
 
 In this section, we analyze various charts to gain insights into sales patterns, product profitability, customer preferences, and payment methods. These visualizations help us understand trends in monthly profits, identify the most profitable products, and observe customer buying preferences by category and payment mode. This analysis supports strategic decisions, such as identifying the best months for promotions, focusing on high-profit products, and aligning marketing efforts with customer preferences in product types and payment options. Each chart offers actionable insights to guide the business in optimizing sales and enhancing customer satisfaction.
 
@@ -151,7 +151,7 @@ Observing these patterns can help the business identify high and low-performing 
 
 ![chart1](https://github.com/user-attachments/assets/54ce9459-c59f-425c-b72d-2036d641a84e)
 
-### 4.2.Top 10 most profit products <a name="sec4p2"></a>
+### 4.2. Top 10 most profit products <a name="sec4p2"></a>
 
 The **Top 10 Products by Total Profit** horizontal bar chart provides a clear view of which products contribute the most to the company’s profit. At the top of the list are **Printers** and **Bookcases**, generating the highest profits, followed by **Sarees** and **Accessories**. This insight suggests that items like printers and bookcases might be high-margin products or in high demand, which could drive the majority of the store's profitability.
 
@@ -159,19 +159,19 @@ Interestingly, **Tables** and **Trousers** also contribute significantly, even t
 
 ![chart3](https://github.com/user-attachments/assets/91a19bbf-ba81-4751-9cd4-3063aea20454)
 
-### 4.3.Number of orders by category <a name="sec4p3"></a>
+### 4.3. Number of orders by category <a name="sec4p3"></a>
 
 The Number of Orders by Category chart highlights the distribution of orders across major product categories, providing insight into consumer preferences. Clothing is the most popular category by a significant margin, accounting for over 900 orders, which is much higher than the other categories. This suggests that clothing products are highly demanded by customers and likely represent a substantial portion of the sales volume.Electronics follows with fewer orders, which may imply that these products are less frequently purchased but could have higher price points or profit margins per unit. Furniture has the lowest order count among the three, indicating that these items may be less in demand or are higher-priced, causing customers to purchase them less frequently. This distribution allows the business to focus on different strategies for each category. For example, increasing the number of items and clothing categories can maintain or increase sales volume. For electronics and furniture, a targeted marketing strategy can increase their order intake by offering more packaging options. Understanding customer demand through these insights can help adjust inventory and marketing activities to match what customers value.
 
 ![chart4](https://github.com/user-attachments/assets/cb1b05bc-d710-4608-8e21-6e299376b4e9)
 
-### 4.4.Number of orders by payment method <a name="sec4p4"></a>
+### 4.4. Number of orders by payment method <a name="sec4p4"></a>
 
 The bar graph of order volume by payment method shows customer preferences for different payment methods. Cash on Delivery (COD) is the most popular payment method, almost two orders of magnitude higher than the next option, UPI. This preference suggests that consumers prefer to deliver rather than pay in advance.UPI is the second most popular method which shows that digital payment methods are on the rise. Debit and debit card payments are also used, but to a lesser extent, EMI payments are the lowest. This information is important to the business because it can focus on optimizing the payment experience for the most popular methods, and offer more incentives for digital payments to promote a simple, free transaction process. Also, these preferences can adjust marketing strategies to target customers based on their price points, improving the shopping experience and increasing conversions.
 
 ![chart2](https://github.com/user-attachments/assets/2f1a3c83-27f1-459a-8c4f-5ff430f46bb5)
 
-## 5.Machine Learning Application <a name="section5"></a>
+## 5. Machine Learning Application <a name="section5"></a>
 
 We analyzed online sales data with the intention of extracting actionable insights to enhance sales strategy and shed light on customer behavior. We looked at two main methods of approaches: sale prediction using linear regression and segmentation of customers via KMeans clustering.
 
@@ -276,11 +276,11 @@ One interesting observation from this clustering is the potential to develop tar
 
 ![kemans1](https://github.com/user-attachments/assets/d19db4b0-a929-46b2-8d33-a9a7e2619cc9)
 
-## 6.Conclusion <a name="conclusion"></a>
+## 6. Conclusion <a name="conclusion"></a>
 
 In conclusion, this analysis provided valuable insights into the sales dynamics and customer behavior for an online retail business. By exploring and visualizing data on monthly profit trends, product profitability, order distribution by category, and payment preferences, we identified key factors influencing sales and customer choices. Predictive modeling using linear regression allowed us to anticipate future sales trends, with significant predictors such as product category, sub-category, and payment method revealing actionable insights. The residual analysis highlighted areas where model accuracy could be improved, especially for higher sales amounts, suggesting the need for further refinement or additional features. Customer segmentation through KMeans clustering effectively categorized customers into three distinct segments, each with unique spending and purchasing behaviors. This segmentation not only highlighted the wealthy customers but exposed some ways to reach out to those cost-cutting patrons. Backed with actionable insights based on evidence, these findings enable the business to make rational calls with respect to product advertising, stock levels, and sales promotions, so helping in achieving high profits and satisfying customers. The analysis successfully answered our initial questions by identifying sales drivers and customer segments, laying a foundation for strategic growth.
 
-## 7.References <a name="references"></a>
+## 7. References <a name="references"></a>
 
 #### Data Sources
 
