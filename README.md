@@ -72,13 +72,13 @@ Product categorization is covered by the **Category** and **Sub-Category** colum
 ```
 First 5 rows of data:
 
-| Order ID | Order Date | CustomerName |      State     |    City    | Amount | Profit |
-|----------|------------|--------------|----------------|------------|--------|--------|
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 5729   | 64     |
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 671    | 114    |
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 443    | 11     |
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 57     | 7      |
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh | Mathura    | 227    | 48     |
+| Order ID | Order Date | CustomerName | State          | City     | Amount | Profit | Quantity | Category   | Sub-Category | PaymentMode |
+|----------|------------|--------------|----------------|----------|--------|--------|----------|------------|--------------|-------------|
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 5729   | 64     | 14       | Furniture  | Chairs       | EMI         |
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 671    | 114    | 9        | Electronics| Phones       | Credit Card |
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 443    | 11     | 1        | Clothing   | Saree        | COD         |
+| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 57     | 7      | 2        | Clothing   | Shirt        | UPI         |
+
 ```
 Key columns for analysis include **Quantity**, **Amount**, and **Profit** (for financial performance), **Category** and **Sub-Category** (for segmentation), **Order Date** (for sales trend analysis), and **Payment Mode** (to understand preferred payment methods). This data structure provides a comprehensive view for deeper analysis and strategy development.
 
