@@ -61,14 +61,6 @@ For this particular project the data is sourced from a dataset provided by Samru
 - **Orders.csv**: Contains Order IDs, order dates, customer names, and locations, which give us a snapshot of who the customers are and where they’re from.
 - **Details.csv**: Adds specific order details linked to each Order ID, allowing us to understand each purchase’s unique characteristics.
 
-### 2.1. Dataset Overview <a name="sec2p1"></a>
-
-In this dataset overview, several columns offer valuable insights into customer purchasing patterns and financial performance, helping us better understand client behavior. Each order is identified by a unique **Order ID**, allowing us to trace individual transactions. The **Order Date** records when each purchase was made, providing an opportunity to analyze sales trends over time.
-
-Details such as **Customer Name**, **State**, and **City** give us information about customer locations, which can be used to refine geographic targeting strategies. **Amount** and **Profit** indicate the revenue and profitability of each order, essential metrics for evaluating the business's financial performance. The **Quantity** column reflects the number of items in each order, allowing for the analysis of bulk purchasing or large orders.
-
-Product categorization is covered by the **Category** and **Sub-Category** columns, which classify products into types (like Electronics or Furniture) and their sub-types. This segmentation is crucial for market analysis and identifying high-performing product categories. Finally, the **Payment Mode** column reveals the type of payment used (such as Credit Card or COD), which highlights customer payment preferences and supports targeted payment-related strategies.
-
 ```
 First 5 rows of data:
 
@@ -80,6 +72,15 @@ First 5 rows of data:
 | B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 57     | 7      | 2        | Clothing   | Shirt        | UPI         |
 
 ```
+
+### 2.1. Dataset Overview <a name="sec2p1"></a>
+
+In this dataset overview, several columns offer valuable insights into customer purchasing patterns and financial performance, helping us better understand client behavior. Each order is identified by a unique **Order ID**, allowing us to trace individual transactions. The **Order Date** records when each purchase was made, providing an opportunity to analyze sales trends over time.
+
+Details such as **Customer Name**, **State**, and **City** give us information about customer locations, which can be used to refine geographic targeting strategies. **Amount** and **Profit** indicate the revenue and profitability of each order, essential metrics for evaluating the business's financial performance. The **Quantity** column reflects the number of items in each order, allowing for the analysis of bulk purchasing or large orders.
+
+Product categorization is covered by the **Category** and **Sub-Category** columns, which classify products into types (like Electronics or Furniture) and their sub-types. This segmentation is crucial for market analysis and identifying high-performing product categories. Finally, the **Payment Mode** column reveals the type of payment used (such as Credit Card or COD), which highlights customer payment preferences and supports targeted payment-related strategies.
+
 Key columns for analysis include **Quantity**, **Amount**, and **Profit** (for financial performance), **Category** and **Sub-Category** (for segmentation), **Order Date** (for sales trend analysis), and **Payment Mode** (to understand preferred payment methods). This data structure provides a comprehensive view for deeper analysis and strategy development.
 
 
@@ -88,7 +89,7 @@ Key columns for analysis include **Quantity**, **Amount**, and **Profit** (for f
 The data preparation and cleaning process is crucial in preparing the dataset for analysis and ensuring accurate results. Initially, we performed a thorough check of the data’s structure, data types, and completeness by examining its summary statistics, types, and sample rows. The dataset contains 1,500 entries with 11 columns, including both numerical columns (such as 'Amount,' 'Profit,' and 'Quantity') and categorical columns (like 'CustomerName,' 'State,' 'City,' 'Category,' 'Sub-Category,' and 'PaymentMode'). This initial examination indicated no missing values, making the dataset complete and eliminating the need for imputation.
 #### Data Information
 
-```plaintext
+```
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 1500 entries, 0 to 1499
 Data columns (total 11 columns):
@@ -111,8 +112,7 @@ memory usage: 129.0+ KB
 
 During exploration, summary statistics highlighted key insights into the data distribution. The 'Amount' and 'Profit' columns had significant variability, with 'Amount' ranging from 4 to 5729 and 'Profit' ranging from -1981 to 1864. This variability suggests a diverse set of transactions, with both highly profitable and unprofitable items. Notably, the mean 'Profit' was 24.64, indicating that while most transactions yielded a profit, some resulted in substantial losses. Furthermore, 'Quantity' had a narrower range, from 1 to 14, with an average of around 3.74 per order. These descriptive statistics helped identify potential outliers in 'Profit' and 'Amount,' which we retained for further analysis as they could represent meaningful high- or low-performing transactions.
 
-#### Data Summary
-
+```
 | Statistic | Amount       | Profit       | Quantity    |
 |-----------|--------------|--------------|-------------|
 | Count     | 1500.000000  | 1500.00000   | 1500.000000 |
@@ -123,7 +123,7 @@ During exploration, summary statistics highlighted key insights into the data di
 | 50%       | 122.000000   | 8.00000      | 3.000000    |
 | 75%       | 326.250000   | 38.00000     | 5.000000    |
 | Max       | 5729.000000  | 1864.00000   | 14.000000   |
-
+```
 
 To make the dataset ready for machine learning, we performed several preprocessing steps. First, date formatting was applied to 'Order Date' by converting it from string format to a datetime format, enabling the extraction of temporal features like 'OrderMonth' and 'OrderDayOfWeek.' These new features capture monthly and weekly patterns in purchasing behavior, which could provide insight into seasonality and day-based trends in sales.
 
@@ -188,7 +188,7 @@ The Durbin-Watson statistic is close to 2 (1.949), suggesting no strong autocorr
 Examining the coefficients, we see how different variables impact sales. For example, certain categorical variables (`Category` and `Sub-Category`) and payment modes show significant coefficients, indicating that specific product types or payment methods may contribute positively or negatively to sales. Some of the time-based variables, such as `OrderMonth`, also exhibit strong effects, suggesting possible seasonality in sales. The large confidence intervals for some coefficients (e.g., certain product sub-categories) imply variability in their impact, pointing to potential interaction effects that could be explored further.
 
 
-```plaintext
+```
     OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 Amount   R-squared:                       0.474
@@ -236,6 +236,7 @@ Skew:                           3.775   Prob(JB):                         0.00
 Kurtosis:                      34.982   Cond. No.                     1.12e+16
 ==============================================================================
 ```
+
 The Histogram of Residuals and the Residuals vs Fitted Values plot both provide valuable insights into the performance of our regression model, revealing areas where the model performs well and where it could be improved. 
 
 The **histogram of residuals** visualizes the differences between the actual and predicted sales values. This plot provides a quick check on the residual distribution. Ideally, residuals should follow a normal distribution centered around zero, which would suggest that the model's errors are randomly distributed, indicating a good fit.
