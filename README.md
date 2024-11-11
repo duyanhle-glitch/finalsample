@@ -179,11 +179,14 @@ We analyzed online sales data with the intention of extracting actionable insigh
 
 ### 5.1 Linear Regression for Sales Prediction <a name="sec5p1"></a>
 
+In this analysis, we aim to develop a predictive model for sales amount (target variable Amount) based on key features extracted from a sales dataset. Using linear regression as our primary modeling technique, we explore how well we can predict sales based on various input factors, including Quantity purchased, Product Category, Sub-Category, Payment Mode, and temporal aspects derived from Order Date (namely, OrderMonth and OrderDayOfWeek).
+
 Based on the OLS regression results, our model provides valuable insights into the factors influencing sales amount (`Amount`). The **R-squared** value of **0.474** implies that approximately 47.4% of the variability in sales can be explained by the features in the model, such as `Quantity`, `Category`, `Sub-Category`, `PaymentMode`, and the extracted date components (`OrderMonth`, `OrderDayOfWeek`). While this is a moderate R-squared, it suggests that these selected features have a substantial influence on sales, although other unobserved factors may also play a role. The **Adjusted R-squared** of **0.464** is slightly lower, accounting for the complexity of the model by penalizing additional predictors. The minimal difference between R-squared and Adjusted R-squared indicates that the model complexity is not excessive, which is positive for model stability. The **F-statistic** of **46.06** with a highly significant p-value (4.22e-146) confirms that the model, as a whole, significantly improves our understanding of sales variability over a model with no predictors.
 
 The Durbin-Watson statistic is close to 2 (1.949), suggesting no strong autocorrelation in the residuals, which is good for the model's assumptions. However, the Omnibus and Jarque-Bera test results show high skewness and kurtosis in the residuals, indicating that the residuals are not normally distributed. This finding is consistent with the skew and outliers observed in the residual plots. These non-ideal residual characteristics suggest that the model could be further improved, perhaps by transforming the data or exploring additional interaction terms to better capture variability in high sales amounts.
 
 Examining the coefficients, we see how different variables impact sales. For example, certain categorical variables (`Category` and `Sub-Category`) and payment modes show significant coefficients, indicating that specific product types or payment methods may contribute positively or negatively to sales. Some of the time-based variables, such as `OrderMonth`, also exhibit strong effects, suggesting possible seasonality in sales. The large confidence intervals for some coefficients (e.g., certain product sub-categories) imply variability in their impact, pointing to potential interaction effects that could be explored further.
+
 
 ```plaintext
     OLS Regression Results                            
@@ -254,6 +257,8 @@ These findings suggest that while the model is reasonably accurate for lower to 
 
 
 ### 5.2 Customer Segmentation with KMeans cluster <a name="sec5p2"></a>
+
+In this analysis, we use KMeans clustering to perform customer segmentation based on key purchasing behavior indicators, specifically Amount (total sales amount) and Quantity (number of items purchased). By segmenting customers into distinct groups, we can better understand and target customer types, identify high-value groups, and tailor marketing strategies accordingly.
 
 The Elbow Method plot helps us determine the optimal number of clusters for customer segmentation. In this graph, the "Within-Cluster Sum of Squares" (WCSS) is plotted against different values of `k` (number of clusters). As `k` increases, the WCSS decreases, indicating that clusters are becoming more compact. However, the rate of decrease starts to slow around `k=3`, forming an "elbow" shape. This suggests that adding more clusters beyond `k=3` does not significantly improve compactness and could lead to diminishing returns. 
 
