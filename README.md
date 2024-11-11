@@ -181,60 +181,62 @@ We analyzed online sales data with the intention of extracting actionable insigh
 
 In this analysis, we aim to develop a predictive model for sales amount (target variable Amount) based on key features extracted from a sales dataset. Using linear regression as our primary modeling technique, we explore how well we can predict sales based on various input factors, including Quantity purchased, Product Category, Sub-Category, Payment Mode, and temporal aspects derived from Order Date (namely, OrderMonth and OrderDayOfWeek).
 
-Based on the OLS regression results, our model provides valuable insights into the factors influencing sales amount (`Amount`). The **R-squared** value of **0.474** implies that approximately 47.4% of the variability in sales can be explained by the features in the model, such as `Quantity`, `Category`, `Sub-Category`, `PaymentMode`, and the extracted date components (`OrderMonth`, `OrderDayOfWeek`). While this is a moderate R-squared, it suggests that these selected features have a substantial influence on sales, although other unobserved factors may also play a role. The **Adjusted R-squared** of **0.464** is slightly lower, accounting for the complexity of the model by penalizing additional predictors. The minimal difference between R-squared and Adjusted R-squared indicates that the model complexity is not excessive, which is positive for model stability. The **F-statistic** of **46.06** with a highly significant p-value (4.22e-146) confirms that the model, as a whole, significantly improves our understanding of sales variability over a model with no predictors.
+In this analysis, we developed a predictive model for sales amount (`Amount`) using linear regression based on factors such as **Quantity purchased**, **Product Category**, **Sub-Category**, and **Payment Mode**. Previously included temporal features derived from `Order Date` (namely, `OrderMonth` and `OrderDayOfWeek`) were removed in this revised model, allowing us to focus solely on product and transaction characteristics. The model achieved an **R-squared** value of **0.474**, indicating that approximately **47.4% of the variability in sales** is explained by the selected features. This moderate R-squared suggests that these features capture a substantial portion of the variability in sales, although a significant amount remains unexplained, potentially due to additional factors such as customer demographics, marketing effects, or external economic conditions. The **Adjusted R-squared** of **0.464** is slightly lower, accounting for model complexity and confirming that each predictor contributes meaningfully, resulting in a stable model. The **F-statistic** of **46.06** and its highly significant p-value (4.22e-146) indicate that the model as a whole is statistically significant, suggesting that the included predictors provide a meaningful improvement in understanding sales variability over a model with no predictors.
 
-The Durbin-Watson statistic is close to 2 (1.949), suggesting no strong autocorrelation in the residuals, which is good for the model's assumptions. However, the Omnibus and Jarque-Bera test results show high skewness and kurtosis in the residuals, indicating that the residuals are not normally distributed. This finding is consistent with the skew and outliers observed in the residual plots. These non-ideal residual characteristics suggest that the model could be further improved, perhaps by transforming the data or exploring additional interaction terms to better capture variability in high sales amounts.
+An analysis of residuals revealed that the **Durbin-Watson statistic** is close to 2 (1.949), suggesting minimal autocorrelation in the residuals, which is a positive indicator for meeting model assumptions. However, the **Omnibus** and **Jarque-Bera tests** indicate that the residuals are not normally distributed, exhibiting high skewness and kurtosis. This suggests significant skew and the presence of outliers in the residuals, which could affect the accuracy of prediction intervals. Addressing these issues may require exploring data transformations (such as a log transformation of the target variable) or considering alternative models that handle non-linear relationships more effectively. Examining the coefficients, we observe that `Quantity` has a positive and significant impact on sales, as expected. Various categories and sub-categories also show significant effects; for instance, `Category_Furniture` and `Sub-Category_Printers` have positive coefficients, indicating these product types contribute positively to sales, while others like `Sub-Category_Leggings` and `Sub-Category_T-shirt` have negative coefficients, suggesting an association with lower sales amounts. Additionally, payment methods such as `PaymentMode_Credit Card` and `PaymentMode_EMI` are positively associated with sales, whereas `PaymentMode_Debit Card` shows a non-significant coefficient, indicating a smaller influence.
 
-Examining the coefficients, we see how different variables impact sales. For example, certain categorical variables (`Category` and `Sub-Category`) and payment modes show significant coefficients, indicating that specific product types or payment methods may contribute positively or negatively to sales. Some of the time-based variables, such as `OrderMonth`, also exhibit strong effects, suggesting possible seasonality in sales. The large confidence intervals for some coefficients (e.g., certain product sub-categories) imply variability in their impact, pointing to potential interaction effects that could be explored further.
-
+In terms of model accuracy, the **Mean Squared Error (MSE)** is **87374.38**, the **Root Mean Squared Error (RMSE)** is **295.59**, and the **Mean Absolute Error (MAE)** is **182.62**. These metrics indicate that, on average, the model's predictions deviate from actual sales values by approximately 295.59 units, with an absolute average error of 182.62 units. The relatively high RMSE and MAE suggest that while the model captures some variability in sales, there is room for improvement in predictive accuracy. These error metrics further underscore the potential benefits of exploring alternative modeling approaches or adding new features to capture more of the variance in sales.
 
 ```
-    OLS Regression Results                            
+OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 Amount   R-squared:                       0.474
 Model:                            OLS   Adj. R-squared:                  0.464
 Method:                 Least Squares   F-statistic:                     46.06
-Date:                Sat, 09 Nov 2024   Prob (F-statistic):          4.22e-146
-Time:                        22:10:31   Log-Likelihood:                -8707.9
+Date:                Mon, 11 Nov 2024   Prob (F-statistic):          4.22e-146
+Time:                        22:10:38   Log-Likelihood:                -8707.9
 No. Observations:                1200   AIC:                         1.746e+04
 Df Residuals:                    1176   BIC:                         1.759e+04
 Df Model:                          23                                         
 Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const        181.7437     15.720     11.561      0.000     150.902     212.586
-x1           164.7277     10.199     16.151      0.000     144.717     184.738
-x2             7.3860     10.160      0.727      0.467     -12.547      27.319
-x3             5.9594     10.226      0.583      0.560     -14.104      26.023
-x4           102.2232     44.104      2.318      0.021      15.691     188.755
-x5           323.9293     24.672     13.130      0.000     275.524     372.335
-x6           169.3071     42.040      4.027      0.000      86.826     251.788
-x7           -45.5077     42.166     -1.079      0.281    -128.237      37.221
-x8           179.2034     64.403      2.783      0.005      52.846     305.561
-x9          -384.6236     43.530     -8.836      0.000    -470.029    -299.218
-x10         -132.6832     27.827     -4.768      0.000    -187.280     -78.086
-x11         -102.3424     52.177     -1.961      0.050    -204.712       0.028
-x12         -123.4917     49.899     -2.475      0.013    -221.392     -25.591
-x13          213.4283     62.448      3.418      0.001      90.907     335.950
-x14          466.3590     66.254      7.039      0.000     336.370     596.348
-x15           64.9673     26.992      2.407      0.016      12.009     117.926
-x16         -114.9733     44.027     -2.611      0.009    -201.354     -28.593
-x17         -186.4071     45.998     -4.053      0.000    -276.654     -96.160
-x18          -99.1426     28.960     -3.423      0.001    -155.962     -42.323
-x19         -120.3127     42.019     -2.863      0.004    -202.753     -37.872
-x20          584.7535     76.001      7.694      0.000     435.641     733.866
-x21          569.9769     54.978     10.367      0.000     462.110     677.844
-x22          190.4687     34.081      5.589      0.000     123.601     257.336
-x23          -24.4279     31.181     -0.783      0.434     -85.604      36.748
-x24          225.1620     39.480      5.703      0.000     147.703     302.621
-x25            0.3367     26.040      0.013      0.990     -50.754      51.428
+=================================================================================================
+                                    coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------
+const                           181.7437     15.720     11.561      0.000     150.902     212.586
+Quantity                        164.7277     10.199     16.151      0.000     144.717     184.738
+OrderMonth                        7.3860     10.160      0.727      0.467     -12.547      27.319
+OrderDayOfWeek                    5.9594     10.226      0.583      0.560     -14.104      26.023
+Category_Electronics            102.2232     44.104      2.318      0.021      15.691     188.755
+Category_Furniture              323.9293     24.672     13.130      0.000     275.524     372.335
+Sub-Category_Bookcases          169.3071     42.040      4.027      0.000      86.826     251.788
+Sub-Category_Chairs             -45.5077     42.166     -1.079      0.281    -128.237      37.221
+Sub-Category_Electronic Games   179.2034     64.403      2.783      0.005      52.846     305.561
+Sub-Category_Furnishings       -384.6236     43.530     -8.836      0.000    -470.029    -299.218
+Sub-Category_Hankerchief       -132.6832     27.827     -4.768      0.000    -187.280     -78.086
+Sub-Category_Kurti             -102.3424     52.177     -1.961      0.050    -204.712       0.028
+Sub-Category_Leggings          -123.4917     49.899     -2.475      0.013    -221.392     -25.591
+Sub-Category_Phones             213.4283     62.448      3.418      0.001      90.907     335.950
+Sub-Category_Printers           466.3590     66.254      7.039      0.000     336.370     596.348
+Sub-Category_Saree               64.9673     26.992      2.407      0.016      12.009     117.926
+Sub-Category_Shirt             -114.9733     44.027     -2.611      0.009    -201.354     -28.593
+Sub-Category_Skirt             -186.4071     45.998     -4.053      0.000    -276.654     -96.160
+Sub-Category_Stole              -99.1426     28.960     -3.423      0.001    -155.962     -42.323
+Sub-Category_T-shirt           -120.3127     42.019     -2.863      0.004    -202.753     -37.872
+Sub-Category_Tables             584.7535     76.001      7.694      0.000     435.641     733.866
+Sub-Category_Trousers           569.9769     54.978     10.367      0.000     462.110     677.844
+PaymentMode_Credit Card         190.4687     34.081      5.589      0.000     123.601     257.336
+PaymentMode_Debit Card          -24.4279     31.181     -0.783      0.434     -85.604      36.748
+PaymentMode_EMI                 225.1620     39.480      5.703      0.000     147.703     302.621
+PaymentMode_UPI                   0.3367     26.040      0.013      0.990     -50.754      51.428
 ==============================================================================
 Omnibus:                     1050.131   Durbin-Watson:                   1.949
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):            53993.749
 Skew:                           3.775   Prob(JB):                         0.00
 Kurtosis:                      34.982   Cond. No.                     1.12e+16
 ==============================================================================
+Mean Squared Error (MSE): 87374.38
+Root Mean Squared Error (RMSE): 295.59
+Mean Absolute Error (MAE): 182.62
 ```
 
 The Histogram of Residuals and the Residuals vs Fitted Values plot both provide valuable insights into the performance of our regression model, revealing areas where the model performs well and where it could be improved. 
