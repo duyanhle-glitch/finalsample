@@ -61,17 +61,8 @@ For this particular project the data is sourced from a dataset provided by Samru
 - **Orders.csv**: Contains Order IDs, order dates, customer names, and locations, which give us a snapshot of who the customers are and where they’re from.
 - **Details.csv**: Adds specific order details linked to each Order ID, allowing us to understand each purchase’s unique characteristics.
 
-```
-First 5 rows of data:
+![Screenshot 2024-11-11 230435](https://github.com/user-attachments/assets/646cda18-8653-4b53-a512-57937a73d82f)
 
-| Order ID | Order Date | CustomerName | State          | City     | Amount | Profit | Quantity | Category   | Sub-Category | PaymentMode |
-|----------|------------|--------------|----------------|----------|--------|--------|----------|------------|--------------|-------------|
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 5729   | 64     | 14       | Furniture  | Chairs       | EMI         |
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 671    | 114    | 9        | Electronics| Phones       | Credit Card |
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 443    | 11     | 1        | Clothing   | Saree        | COD         |
-| B-26055  | 10-03-2018 | Harivansh    | Uttar Pradesh  | Mathura  | 57     | 7      | 2        | Clothing   | Shirt        | UPI         |
-
-```
 
 ### 2.1. Dataset Overview <a name="sec2p1"></a>
 
