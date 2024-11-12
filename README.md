@@ -259,7 +259,7 @@ Therefore, `k=3` is a good choice for our segmentation, because it balances capt
 ![kmeans1](https://github.com/user-attachments/assets/648048a4-d56b-49d4-8fc8-cee040e30afd)
 
 ```
-silhouette score =0.53
+silhouette score = 0.53
 ```
 
 
