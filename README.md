@@ -41,9 +41,9 @@
 
    5.2.[Customer Segmentation with KMeans cluster](#sec5p2)
    
-7. [Conclusion](#conclusion)
+6. [Conclusion](#conclusion)
 
-8. [References](#references)
+7. [References](#references)
 
 
 ## 1. Introduction  <a name="introduction"></a>
