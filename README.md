@@ -280,12 +280,12 @@ In conclusion, this analysis provided valuable insights into the sales dynamics 
 #### Data Sources
 
 - [1] **Kaggle Dataset - Sales Data**  
-   Bhosale, S. (n.d.). *Online Retail Sales Dataset*. Retrieved from [Kaggle](https://www.kaggle.com/).
+   Bhosale, S. *Online Sales Dataset*. Retrieved from [Kaggle](kaggle.com/datasets/samruddhi4040/online-sales-data).
   
 #### Software and Libraries
 
 - [2] **GitHub Repository**  
-   Open-source contributors. (n.d.). *GitHub Repositories for Data Science*. GitHub. Retrieved from [https://github.com/](https://github.com/).  
+   Open-source contributors. *GitHub Repositories for Data Science*. GitHub. Retrieved from [https://github.com/](https://github.com/).  
 
 - [3] **Scikit-Learn Library**  
    Scikit-Learn was used to implement machine learning models like KMeans clustering and linear regression, along with data preprocessing.
