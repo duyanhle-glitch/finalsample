@@ -280,7 +280,7 @@ In conclusion, this analysis provided valuable insights into the sales dynamics 
 #### Data Sources
 
 - [1] **Kaggle Dataset - Sales Data**  
-   Bhosale, S. *Online Sales Dataset*. Retrieved from [Kaggle Online Sales data](https://www.kaggle.com/datasets/samruddhi4040/online-sales-data).
+   Bhosale, S. *Online Sales Dataset*. Retrieved from [Kaggle Online Sales data]([https://www.kaggle.com/datasets/samruddhi4040/online-sales-data](https://www.kaggle.com/datasets/samruddhi4040/online-sales-data)).
   
 #### Software and Libraries
 
